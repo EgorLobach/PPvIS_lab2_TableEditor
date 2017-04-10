@@ -11,7 +11,11 @@ import java.util.ArrayList;
  * Created by anonymous on 10.04.2017.
  */
 public class TableOfStudents {
-    private TableModel tableModel= new TableModel();;
+    private ArrayList<Student> studentArrayList;
+    private int countStudOnPage = 20;
+    private int currentPage = 1;
+
+    private TableModel tableModel= new TableModel();
     private JTable tableOfStudent = new JTable(tableModel);;
     private JScrollPane tableScrollPane = new JScrollPane(tableOfStudent);
 
@@ -21,11 +25,11 @@ public class TableOfStudents {
             tableModel.addStudent(students.get(i));
     }
 
-
     public JScrollPane initTableOfStudents()
     {
         tableOfStudent.setRowHeight(20);
         tableOfStudent.setFont(new Font("Table Of Student", Font.ITALIC, 17));
+        tableOfStudent.getColumnModel().getColumn(0).setPreferredWidth(250);
 
         tempAddData();
 

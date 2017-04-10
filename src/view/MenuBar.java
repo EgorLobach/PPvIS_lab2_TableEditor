@@ -16,7 +16,6 @@ public class MenuBar {
     private JMenuItem deleteByHouseNumberAndLastName = new JMenuItem("По номеру дома и фамилии");
     private JMenuItem deleteByStreetAndApartment = new JMenuItem("По улице и квартире");
     private JMenuItem deleteByNameAndNumbersFoundInTheRoomNumber = new JMenuItem("По фамилии и цифрам встречающемся в номере дома");
-    private JMenu exitMenu = new JMenu("Выход");
     private JMenuItem exitMenuItem = new JMenuItem("Выход");
     private JMenu fileMenu = new JMenu("Файл");
     private JMenuItem openMenuItem = new JMenuItem("Открыть");
@@ -29,6 +28,7 @@ public class MenuBar {
         fileMenu.add(openMenuItem);
         fileMenu.add(saveMenuItem);
         fileMenu.add(addStudentMenuItem);
+        fileMenu.addSeparator();
 
         searchMenu.add(searchByHouseNumberAndLastName);
         searchMenu.add(searchByStreetAndApartment);
@@ -39,12 +39,11 @@ public class MenuBar {
         deleteMenu.add(deleteByNameAndNumbersFoundInTheRoomNumber);
 
         exitMenuItem.addActionListener(new ExitActionListener());
-        exitMenu.add(exitMenuItem);
+        fileMenu.add(exitMenuItem);
 
         headMenuBar.add(fileMenu);
         headMenuBar.add(searchMenu);
         headMenuBar.add(deleteMenu);
-        headMenuBar.add(exitMenu);
 
         return headMenuBar;
     }

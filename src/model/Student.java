@@ -1,9 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Created by anonymous on 10.04.2017.
  */
 public class Student{
+        public static ArrayList<Student> studentArrayList = new ArrayList<>();
         private String surName;  //фамилия
         private String firstName;//имя
         private String lastName; //отчесвто

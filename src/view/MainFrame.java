@@ -16,7 +16,7 @@ public class MainFrame {
     private Dimension d;
     private JFrame headFrame = new JFrame();
     private ArrayList<Student> studentsData = new ArrayList<>();
-    //private MenuBar headMenuBar = new MenuBar();
+    private MenuBar headMenuBar = new MenuBar();
     private ToolBar headToolBar = new ToolBar();
     private TableOfStudents headTableOfStudents;
 
@@ -36,7 +36,7 @@ public class MainFrame {
     {
         headFrame.add(headToolBar.initToolBar(), BorderLayout.NORTH);
         headFrame.add(headTableOfStudents.initTableOfStudents());
-        //headFrame.setJMenuBar(headMenuBar.initMenuBar());
+        headFrame.setJMenuBar(headMenuBar.initMenuBar());
         headFrame.pack();
         headFrame.setVisible(true);
     }
