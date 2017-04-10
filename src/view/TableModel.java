@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class TableModel extends AbstractTableModel {
     private int columnCount = 8;
-    private List<TableRow> tableData;
+    private ArrayList<TableRow> tableData;
     String colNames[] = {"ФИО", "Страна", "Область", "Город", "Улица", "Дом", "Корпус", "Квартира"};
 
     TableModel()
     {
-        tableData = new ArrayList<TableRow>();
+        this.tableData = new ArrayList<TableRow>();
     }
 
 

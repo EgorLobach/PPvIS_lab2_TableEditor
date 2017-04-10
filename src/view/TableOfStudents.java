@@ -33,7 +33,29 @@ public class TableOfStudents {
 
         tempAddData();
 
+        /*
+        studentArrayList.add(new Student("Лобач", "Александр", "Валентинович", "Беларусь","Минская область",
+               "Минск", "Казинца", 22, 1,64));
+        updateTable();
+        */
+
         return tableScrollPane;
+    }
+    public void makeTable(ArrayList<Student> studentArrayList)
+    {
+        for(int i = 0; i < studentArrayList.size(); i++){
+            tableOfStudent.setValueAt(studentArrayList.get(i).getSurName() +
+                    " " + studentArrayList.get(i).getFirstName() +
+                    " " + studentArrayList.get(i).getSecondName(),i,0);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getCountry(),i,1);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getRegion(),i,2);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getCity(),i,3);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getStreet(),i,4);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getHouse(),i,5);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getHousing(),i,6);
+            tableOfStudent.setValueAt(studentArrayList.get(i).getAddress().getApartment(),i,7);
+        }
+
     }
 
 
@@ -54,4 +76,11 @@ public class TableOfStudents {
         tableModel.addStudent(student);
     }
 
+    public void updateTable(){
+        tableOfStudent.removeAll();
+        tableOfStudent.updateUI();
+        makeTable(studentArrayList);
+        tableOfStudent.revalidate();
+        tableOfStudent.repaint();
+    }
 }

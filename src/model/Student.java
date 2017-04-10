@@ -9,7 +9,7 @@ public class Student{
         public static ArrayList<Student> studentArrayList = new ArrayList<>();
         private String surName;  //фамилия
         private String firstName;//имя
-        private String lastName; //отчесвто
+        private String secondName; //отчесвто
         private Address address;
 
 
@@ -22,7 +22,7 @@ public class Student{
         {
             this.surName=surName;
             this.firstName=firstName;
-            this.lastName=lastName;
+            this.secondName =lastName;
             this.address=new Address(country, region, city, street, house, housing,apartment);
         }
         public void setSurName(String surName)
@@ -33,9 +33,9 @@ public class Student{
         {
             this.firstName=firstName;
         }
-        public void setLastName(String lastName)
+        public void setSecondName(String secondName)
         {
-            this.lastName=lastName;
+            this.secondName = secondName;
         }
         public void setAddress(Address address)
         {
@@ -50,9 +50,9 @@ public class Student{
         {
             return firstName;
         }
-        public String getLastName()
+        public String getSecondName()
         {
-            return lastName;
+            return secondName;
         }
         public Address getAddress()
         {
@@ -66,7 +66,7 @@ public class Student{
             {
                 case 0: return surName;
                 case 1: return firstName;
-                case 2: return lastName;
+                case 2: return secondName;
                 case 3: return address;
             }
             return null;

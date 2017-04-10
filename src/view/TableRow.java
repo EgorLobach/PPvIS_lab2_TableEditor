@@ -18,7 +18,7 @@ public class TableRow {
 
     public TableRow(Student student)
     {
-        this.fullName = student.getSurName()+" "+student.getFirstName()+" "+student.getLastName();
+        this.fullName = student.getSurName()+" "+student.getFirstName()+" "+student.getSecondName();
         Address address = student.getAddress();
         this.country=address.getCountry();
         this.region=address.getRegion();
