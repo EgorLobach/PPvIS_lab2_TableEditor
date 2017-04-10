@@ -11,22 +11,23 @@ import java.util.List;
  */
 public class TableModel extends AbstractTableModel {
     private int columnCount = 8;
-    private List<Student> tableData;
+    private List<TableRow> tableData;
     String colNames[] = {"ФИО", "Страна", "Область", "Город", "Улица", "Дом", "Корпус", "Квартира"};
 
     TableModel()
     {
-        tableData = new ArrayList<Student>();
+        tableData = new ArrayList<TableRow>();
     }
+
 
     public void addStudent(String surName,String firstName,String lastName, String country, String region,
                            String city, String street, int house, int housing, int apartment)
     {
-        tableData.add(new Student(surName, firstName, lastName, country, region, city, street, house, housing, apartment));
+        tableData.add(new TableRow(new Student(surName, firstName, lastName, country, region, city, street, house, housing, apartment)));
     }
     public void addStudent(Student student)
     {
-        tableData.add(student);
+        tableData.add(new TableRow(student));
     }
 
     @Override
@@ -41,7 +42,7 @@ public class TableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Student rows = tableData.get(rowIndex);
+        TableRow rows = tableData.get(rowIndex);
         return rows.getValue(columnIndex);
     }
     @Override
