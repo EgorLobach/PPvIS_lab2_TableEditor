@@ -7,6 +7,14 @@ import model.Student;
  * Created by anonymous on 10.04.2017.
  */
 public class TableRow {
+    public static final int FULLNAME_COLUMN = 0;
+    public static final int COUNTRY_COLUMN = 1;
+    public static final int REGION_COLUMN = 2;
+    public static final int CITY_COLUMN = 3;
+    public static final int STREET_COLUMN = 4;
+    public static final int HOUSE_COLUMN = 5;
+    public static final int HOUSING_COLUMN = 6;
+    public static final int APARTAMENT_COLUMN = 7;
     String fullName;
     private String country;  //страна
     private String region;   //область
@@ -28,18 +36,19 @@ public class TableRow {
         this.housing=address.getHousing();
         this.apartment=address.getApartment();
     }
-    public Object getValue(int index)
+    public Object getValue(int columnIndex)
     {
-        switch (index)
+
+        switch (columnIndex)
         {
-            case 0: return fullName;
-            case 1: return country;
-            case 2: return region;
-            case 3: return city;
-            case 4: return street;
-            case 5: return house;
-            case 6: return housing;
-            case 7: return apartment;
+            case FULLNAME_COLUMN: return fullName;
+            case COUNTRY_COLUMN: return country;
+            case REGION_COLUMN: return region;
+            case CITY_COLUMN: return city;
+            case STREET_COLUMN: return street;
+            case HOUSE_COLUMN: return house;
+            case HOUSING_COLUMN: return housing;
+            case APARTAMENT_COLUMN: return apartment;
         }
         return null;
     }

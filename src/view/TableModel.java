@@ -20,14 +20,22 @@ public class TableModel extends AbstractTableModel {
     }
 
 
-    public void addStudent(String surName,String firstName,String lastName, String country, String region,
-                           String city, String street, int house, int housing, int apartment)
+    public void addStudent(ArrayList<Student> studentArrayList)
     {
-        tableData.add(new TableRow(new Student(surName, firstName, lastName, country, region, city, street, house, housing, apartment)));
+        deleteAllStudent();
+        for (int i=0; i<studentArrayList.size();i++)
+        tableData.add(new TableRow(studentArrayList.get(i)));
     }
     public void addStudent(Student student)
     {
         tableData.add(new TableRow(student));
+    }
+    public void deleteAllStudent()
+    {
+        for (int i=0;i<tableData.size();i++)
+        {
+            tableData.remove(i);
+        }
     }
 
     @Override

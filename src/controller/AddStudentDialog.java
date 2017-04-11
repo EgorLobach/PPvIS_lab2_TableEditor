@@ -15,9 +15,11 @@ public class AddStudentDialog {
 
     public Student currentStudent = new Student();
 
+    private StudentController controller;
+
     private JLabel surNameLabel = new JLabel("Фамилия");
     private JLabel firstNameLabel = new JLabel("Имя");
-    private JLabel lastNameLabel = new JLabel("Отчество");
+    private JLabel secondNameLabel = new JLabel("Отчество");
     private JLabel countryLabel = new JLabel("Страна");
     private JLabel regionLabel = new JLabel("Область");
     private JLabel cityLabel = new JLabel("Город");
@@ -28,7 +30,7 @@ public class AddStudentDialog {
 
     private JTextField surNameTextField = new JTextField(20);
     private JTextField firstNameTextField = new JTextField(20);
-    private JTextField lastNameTextField = new JTextField(20);
+    private JTextField secondNameTextField = new JTextField(20);
     private JTextField countryTextField = new JTextField(20);
     private JTextField regionTextField = new JTextField(20);
     private JTextField cityTextField = new JTextField(20);
@@ -39,8 +41,9 @@ public class AddStudentDialog {
 
     private JButton addStudentButton = new JButton("Добавить");
 
-    public AddStudentDialog()
+    public AddStudentDialog(StudentController controller)
     {
+        this.controller=controller;
         addStudentDialog.setTitle("Добавить");
         addStudentDialog.setSize(700,600);
         addStudentDialog.setLocationRelativeTo(null);
@@ -49,7 +52,7 @@ public class AddStudentDialog {
 
         surNameTextField.setFont(new Font("", Font.ITALIC,17));
         firstNameTextField.setFont(new Font("", Font.ITALIC,17));
-        lastNameTextField.setFont(new Font("", Font.ITALIC,17));
+        secondNameTextField.setFont(new Font("", Font.ITALIC,17));
         countryTextField.setFont(new Font("", Font.ITALIC,17));
         regionTextField.setFont(new Font("", Font.ITALIC,17));
         cityTextField.setFont(new Font("", Font.ITALIC,17));
@@ -60,7 +63,7 @@ public class AddStudentDialog {
 
         surNameLabel.setFont(new Font("", Font.ITALIC,17));
         firstNameLabel.setFont(new Font("", Font.ITALIC,17));
-        lastNameLabel.setFont(new Font("", Font.ITALIC,17));
+        secondNameLabel.setFont(new Font("", Font.ITALIC,17));
         countryLabel.setFont(new Font("", Font.ITALIC,17));
         regionLabel.setFont(new Font("", Font.ITALIC,17));
         cityLabel.setFont(new Font("", Font.ITALIC,17));
@@ -73,7 +76,7 @@ public class AddStudentDialog {
 
         surNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         firstNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lastNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        secondNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         countryLabel.setHorizontalAlignment(SwingConstants.CENTER);
         regionLabel.setHorizontalAlignment(SwingConstants.CENTER);
         cityLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -88,13 +91,14 @@ public class AddStudentDialog {
 
     public void initAddStudentDialog()
     {
+        addStudentButton.addActionListener(new AddStudentButtonActionListener(controller));
         addStudentDialog.add(surNameLabel, new GridBagConstraints(0, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
         addStudentDialog.add(firstNameLabel, new GridBagConstraints(0, 1, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(lastNameLabel, new GridBagConstraints(0, 2, 1, 1, 1 , 1,
+        addStudentDialog.add(secondNameLabel, new GridBagConstraints(0, 2, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
         addStudentDialog.add(countryLabel, new GridBagConstraints(0, 3, 1, 1, 1 , 1,
@@ -125,7 +129,7 @@ public class AddStudentDialog {
         addStudentDialog.add(firstNameTextField, new GridBagConstraints(1, 1, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(lastNameTextField, new GridBagConstraints(1, 2, 1, 1, 1 , 1,
+        addStudentDialog.add(secondNameTextField, new GridBagConstraints(1, 2, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
         addStudentDialog.add(countryTextField, new GridBagConstraints(1, 3, 1, 1, 1 , 1,
@@ -161,19 +165,24 @@ public class AddStudentDialog {
     private class AddStudentButtonActionListener implements ActionListener
     {
 
+        private final StudentController controller;
+
+        private AddStudentButtonActionListener(StudentController controller) {
+            this.controller = controller;
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
-/*
-            currentStudent.setFullName(fullNameTextField.getText());
-            currentStudent.setFullName(countryTextField.getText());
-            currentStudent.setFullName(regionTextField.getText());
-            currentStudent.setFullName(cityTextField.getText());
-            currentStudent.setFullName(streetLabel.getText());
-            currentStudent.setFullName(houseTextField.getText());
-            currentStudent.setFullName(housingTextField.getText());
-            currentStudent.setFullName(apartmentTextField.getText());
-*/
+
+            controller.addStudent(new Student(surNameTextField.getText(), firstNameTextField.getText(),
+                    secondNameTextField.getText(), countryTextField.getText(), regionTextField.getText(),
+                    cityTextField.getText(), streetLabel.getText(), Integer.parseInt(houseTextField.getText()),
+                    Integer.parseInt(housingTextField.getText()), Integer.parseInt(apartmentTextField.getText())));
+
+            //main.update()
+
 
         }
+
     }
 }

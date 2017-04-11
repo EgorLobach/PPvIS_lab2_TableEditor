@@ -1,10 +1,7 @@
 package view;
 
 
-import controller.AddStudentDialog;
-import controller.DeleteStudentDialog;
-import controller.ExitActionListener;
-import controller.SearchStudentDialog;
+import controller.*;
 
 import javax.swing.*;
 
@@ -14,6 +11,8 @@ import javax.swing.*;
 public class ToolBar {
     private JToolBar toolBar = new JToolBar(SwingConstants.HORIZONTAL);
 
+    private StudentController studentController;
+
     private JButton openButton = new JButton(new ImageIcon("resources/png/24x24/Folder.png"));
     private JButton addButton = new JButton(new ImageIcon("resources/png/24x24/Add.png"));
     private JButton saveButton = new JButton(new ImageIcon("resources/png/24x24/Save.png"));
@@ -21,6 +20,10 @@ public class ToolBar {
     private JButton deleteButton = new JButton(new ImageIcon("resources/png/24x24/Delete.png"));
     private JButton exitButton = new JButton(new ImageIcon("resources/png/24x24/Exit.png"));
 
+    public ToolBar(StudentController controller)
+    {
+        this.studentController =controller;
+    }
     public JToolBar initToolBar()
     {
         openButton.setSize(24,24);
@@ -33,7 +36,7 @@ public class ToolBar {
 
         exitButton.addActionListener(new ExitActionListener());
         addButton.addActionListener(e -> {
-            AddStudentDialog addStudentDialog = new AddStudentDialog();
+            AddStudentDialog addStudentDialog = new AddStudentDialog(studentController);
             addStudentDialog.initAddStudentDialog();} );
         searchButton.addActionListener(e -> {
             SearchStudentDialog searchStudentDialog = new SearchStudentDialog();

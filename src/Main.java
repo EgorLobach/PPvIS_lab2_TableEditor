@@ -1,3 +1,5 @@
+import controller.StudentController;
+import model.StudentDataBase;
 import view.MainFrame;
 
 import javax.swing.*;
@@ -10,9 +12,12 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                MainFrame mainFrame = new MainFrame("Frame", new Dimension(1900, 900));
+                StudentDataBase studentDataBase = new StudentDataBase();
+                StudentController studentController = new StudentController(studentDataBase);
+                MainFrame mainFrame = new MainFrame("Frame", new Dimension(1900, 900), studentController);
                 mainFrame.initMainFrame();
             }
         });
+
     }
 }
