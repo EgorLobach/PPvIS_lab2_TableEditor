@@ -13,19 +13,22 @@ public class Student{
         private Address address;
 
 
-        public Student()
-        {
 
-        }
-        public Student(String surName,String firstName,String lastName,
-                String country, String region, String city, String street, int house, int housing, int apartment)
+        public Student(String surName, String firstName, String lastName,
+                       String country, String region, String city, String street,
+                       int house, int housing, int apartment)
         {
             this.surName=surName;
             this.firstName=firstName;
             this.secondName =lastName;
             this.address=new Address(country, region, city, street, house, housing,apartment);
         }
-        public void setSurName(String surName)
+
+    public Student() {
+
+    }
+
+    public void setSurName(String surName)
         {
             this.surName=surName;
         }

@@ -1,6 +1,7 @@
 package view;
 
 import model.Student;
+import model.StudentDataBase;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ public class TableModel extends AbstractTableModel {
     }
 
 
-    public void addStudent(ArrayList<Student> studentArrayList)
+    public void addStudent(StudentDataBase studentDataBase)
     {
         deleteAllStudent();
-        for (int i=0; i<studentArrayList.size();i++)
-        tableData.add(new TableRow(studentArrayList.get(i)));
+        for (int i=0; i<studentDataBase.size();i++)
+        tableData.add(new TableRow(studentDataBase.get(i)));
     }
     public void addStudent(Student student)
     {

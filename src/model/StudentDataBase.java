@@ -11,4 +11,13 @@ public class StudentDataBase {
     public void add(Student student) {
         studentArrayList.add(student);
     }
+
+    public int size() {
+        return studentArrayList.size();
+    }
+
+    public Student get(int i) {
+        return studentArrayList.get(i);
+    }
+
 }

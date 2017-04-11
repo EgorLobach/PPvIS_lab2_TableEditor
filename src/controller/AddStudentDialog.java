@@ -1,6 +1,7 @@
 package controller;
 
 import model.Student;
+import view.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -162,6 +163,7 @@ public class AddStudentDialog {
         addStudentDialog.setVisible(true);
         addStudentDialog.pack();
     }
+
     private class AddStudentButtonActionListener implements ActionListener
     {
 
@@ -176,12 +178,15 @@ public class AddStudentDialog {
 
             controller.addStudent(new Student(surNameTextField.getText(), firstNameTextField.getText(),
                     secondNameTextField.getText(), countryTextField.getText(), regionTextField.getText(),
-                    cityTextField.getText(), streetLabel.getText(), Integer.parseInt(houseTextField.getText()),
+                    cityTextField.getText(), streetTextField.getText(), Integer.parseInt(houseTextField.getText()),
                     Integer.parseInt(housingTextField.getText()), Integer.parseInt(apartmentTextField.getText())));
 
-            //main.update()
+            //main.updateMainFrame();
 
+            JOptionPane.showMessageDialog(addStudentDialog, "Запись успешно добавлена",
+                    "Добавлено", JOptionPane.INFORMATION_MESSAGE);
 
+            addStudentDialog.dispose();
         }
 
     }

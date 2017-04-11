@@ -14,7 +14,7 @@ public class Main {
             public void run() {
                 StudentDataBase studentDataBase = new StudentDataBase();
                 StudentController studentController = new StudentController(studentDataBase);
-                MainFrame mainFrame = new MainFrame("Frame", new Dimension(1900, 900), studentController);
+                MainFrame mainFrame = new MainFrame("Frame", new Dimension(1900, 900), studentController, studentDataBase);
                 mainFrame.initMainFrame();
             }
         });

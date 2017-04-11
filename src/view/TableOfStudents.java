@@ -1,9 +1,9 @@
 package view;
 
 import model.Student;
+import model.StudentDataBase;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -11,19 +11,22 @@ import java.util.ArrayList;
  * Created by anonymous on 10.04.2017.
  */
 public class TableOfStudents {
-    private ArrayList<Student> studentArrayList;
-    private int countPage = 20;
-    private int currentPage = 1;
+
 
     private TableModel tableModel= new TableModel();
     private JTable tableOfStudent = new JTable(tableModel);;
     private JScrollPane tableScrollPane = new JScrollPane(tableOfStudent);
 
-    TableOfStudents(ArrayList<Student> students)
+    TableOfStudents(StudentDataBase studentDataBase)
     {
-        for(int i =0; i<students.size();i++)
-            tableModel.addStudent(students.get(i));
+            tableModel.addStudent(studentDataBase);
     }
+    public void reloadTableOfStudent(StudentDataBase studentDataBase)
+    {
+     tableModel.deleteAllStudent();
+     tableModel.addStudent(studentDataBase);
+    }
+
 
     public JScrollPane initTableOfStudents()
     {
@@ -31,13 +34,6 @@ public class TableOfStudents {
         tableOfStudent.setFont(new Font("Table Of Student", Font.ITALIC, 17));
         tableOfStudent.getColumnModel().getColumn(0).setPreferredWidth(250);
 
-        /*
-        tempAddData();
-
-        Student.studentArrayList.add(new Student("Лобач", "Александр", "Валентинович", "Беларусь","Минская область",
-               "Минск", "Казинца", 22, 1,64));
-        updateTable();
-        */
 
         return tableScrollPane;
     }
@@ -51,14 +47,9 @@ public class TableOfStudents {
     }
 
 
-/*
-    public void updateTable(){
-        tableOfStudent.removeAll();
+    public void updateUI() {
         tableOfStudent.updateUI();
-        tableModel.deleteAllStudent();
-        tableModel.addStudent(Student.studentArrayList);
-        tableOfStudent.revalidate();
-        tableOfStudent.repaint();
+        tableScrollPane.updateUI();
     }
-*/
+
 }

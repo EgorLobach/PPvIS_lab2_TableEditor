@@ -11,11 +11,11 @@ public class StudentController {
 
     public StudentController(StudentDataBase studentDataBase)
     {
-
         this.studentDataBase = studentDataBase;
     }
 
     public void addStudent(Student student) {
         studentDataBase.add(student);
     }
+
 }
