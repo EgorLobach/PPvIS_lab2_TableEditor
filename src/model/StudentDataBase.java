@@ -12,6 +12,11 @@ public class StudentDataBase {
         studentArrayList.add(student);
     }
 
+    public void delete(int index)
+    {
+        studentArrayList.remove(index);
+    }
+
     public int size() {
         return studentArrayList.size();
     }

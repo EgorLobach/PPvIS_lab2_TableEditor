@@ -15,9 +15,8 @@ import java.awt.event.ActionListener;
 public class AddStudentDialog {
     private JDialog addStudentDialog = new JDialog();
 
-    public Student currentStudent = new Student();
-
     private StudentController controller;
+    private MainFrame mainFrame;
 
     private JLabel surNameLabel = new JLabel("Фамилия");
     private JLabel firstNameLabel = new JLabel("Имя");
@@ -42,7 +41,7 @@ public class AddStudentDialog {
     private JTextField apartmentTextField = new JTextField(20);
 
     private JButton addStudentButton = new JButton("Добавить");
-    private MainFrame mainFrame;
+
 
     public AddStudentDialog(StudentController controller, MainFrame mainFrame)
     {
@@ -179,17 +178,37 @@ public class AddStudentDialog {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            controller.addStudent(new Student(surNameTextField.getText(), firstNameTextField.getText(),
-                    secondNameTextField.getText(), countryTextField.getText(), regionTextField.getText(),
-                    cityTextField.getText(), streetTextField.getText(), Integer.parseInt(houseTextField.getText()),
-                    Integer.parseInt(housingTextField.getText()), Integer.parseInt(apartmentTextField.getText())));
+            if (surNameTextField.getText().isEmpty()|| firstNameTextField.getText().isEmpty()||
+                    secondNameTextField.getText().isEmpty()|| countryTextField.getText().isEmpty()|| regionTextField.getText().isEmpty()||
+                    cityTextField.getText().isEmpty()|| streetTextField.getText().isEmpty()|| houseTextField.getText().isEmpty()||
+                    housingTextField.getText().isEmpty()||apartmentTextField.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(addStudentDialog, "Некоторые поля пустые",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+             else
+            {
+                try {
+                    controller.addStudent(new Student(surNameTextField.getText(), firstNameTextField.getText(),
+                            secondNameTextField.getText(), countryTextField.getText(), regionTextField.getText(),
+                            cityTextField.getText(), streetTextField.getText(), Integer.parseInt(houseTextField.getText()),
+                            Integer.parseInt(housingTextField.getText()), Integer.parseInt(apartmentTextField.getText())));
 
-            mainFrame.updateMainFrame();
+                    mainFrame.updateMainFrame();
 
-            JOptionPane.showMessageDialog(addStudentDialog, "Запись успешно добавлена",
-                    "Добавлено", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(addStudentDialog, "Запись успешно добавлена",
+                            "Добавлено", JOptionPane.INFORMATION_MESSAGE);
 
-            addStudentDialog.dispose();
+                    addStudentDialog.dispose();
+                }
+                catch (NumberFormatException exception)
+                {
+                    JOptionPane.showMessageDialog(addStudentDialog, "Несоответствие данных",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+
         }
 
     }

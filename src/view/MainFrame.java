@@ -100,7 +100,7 @@ public class MainFrame {
             searchStudentDialog.initSearchStudentDialog();
         });
         deleteButton.addActionListener(e -> {
-            DeleteStudentDialog deleteStudentDialog = new DeleteStudentDialog();
+            DeleteStudentDialog deleteStudentDialog = new DeleteStudentDialog(studentController, MainFrame.this);
             deleteStudentDialog.initDeleteStudentDialog();
         });
         refreshButton.addActionListener(e ->{
