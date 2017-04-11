@@ -92,7 +92,7 @@ public class MainFrame {
         exitButton.setSize(24,24);
         exitButton.addActionListener(new ExitActionListener());
         addButton.addActionListener(e -> {
-            AddStudentDialog addStudentDialog = new AddStudentDialog(studentController);
+            AddStudentDialog addStudentDialog = new AddStudentDialog(studentController, MainFrame.this);
             addStudentDialog.initAddStudentDialog();
         } );
         searchButton.addActionListener(e -> {

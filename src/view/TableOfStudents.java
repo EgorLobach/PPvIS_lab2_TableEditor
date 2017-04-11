@@ -39,8 +39,6 @@ public class TableOfStudents {
     }
 
 
-    public TableModel getTableModel(){return tableModel;}
-
     public void setPreferredSize (Dimension dimension)
     {
         tableScrollPane.setPreferredSize(dimension);

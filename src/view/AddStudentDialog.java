@@ -1,5 +1,6 @@
-package controller;
+package view;
 
+import controller.StudentController;
 import model.Student;
 import view.MainFrame;
 
@@ -41,10 +42,12 @@ public class AddStudentDialog {
     private JTextField apartmentTextField = new JTextField(20);
 
     private JButton addStudentButton = new JButton("Добавить");
+    private MainFrame mainFrame;
 
-    public AddStudentDialog(StudentController controller)
+    public AddStudentDialog(StudentController controller, MainFrame mainFrame)
     {
         this.controller=controller;
+        this.mainFrame=mainFrame;
         addStudentDialog.setTitle("Добавить");
         addStudentDialog.setSize(700,600);
         addStudentDialog.setLocationRelativeTo(null);
@@ -181,7 +184,7 @@ public class AddStudentDialog {
                     cityTextField.getText(), streetTextField.getText(), Integer.parseInt(houseTextField.getText()),
                     Integer.parseInt(housingTextField.getText()), Integer.parseInt(apartmentTextField.getText())));
 
-            //main.updateMainFrame();
+            mainFrame.updateMainFrame();
 
             JOptionPane.showMessageDialog(addStudentDialog, "Запись успешно добавлена",
                     "Добавлено", JOptionPane.INFORMATION_MESSAGE);
