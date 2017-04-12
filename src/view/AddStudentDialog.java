@@ -52,6 +52,7 @@ public class AddStudentDialog {
         addStudentDialog.setLocationRelativeTo(null);
         addStudentDialog.setLayout(new GridBagLayout());
         addStudentDialog.setResizable(false);
+        addStudentDialog.setModal(true);
 
         surNameTextField.setFont(new Font("", Font.ITALIC,17));
         firstNameTextField.setFont(new Font("", Font.ITALIC,17));
@@ -161,9 +162,9 @@ public class AddStudentDialog {
                 new Insets(1, 1, 1, 1), 0, 0));
 
 
-
-        addStudentDialog.setVisible(true);
         addStudentDialog.pack();
+        addStudentDialog.setVisible(true);
+
     }
 
     private class AddStudentButtonActionListener implements ActionListener

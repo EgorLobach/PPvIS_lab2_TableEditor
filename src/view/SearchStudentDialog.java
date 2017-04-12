@@ -26,6 +26,7 @@ public class SearchStudentDialog {
     {
         this.controller=controller;
         this.mainFrame=mainFrame;
+        searchStudentDialog.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
         searchStudentDialog.setTitle("Найти");
         searchStudentDialog.setSize(700,600);
         searchStudentDialog.setLocationRelativeTo(null);
@@ -37,6 +38,7 @@ public class SearchStudentDialog {
         tableOfStudents.setPreferredSize(new Dimension(700, 400));
 
 
+
     }
     public void initSearchStudentDialog()
     {
@@ -45,8 +47,8 @@ public class SearchStudentDialog {
         searchStudentDialog.getContentPane().add(searchTabbedPane.initSearchAndDeletePanel(), BorderLayout.NORTH);
         searchStudentDialog.getContentPane().add(searchButton, BorderLayout.CENTER);
 
-        searchStudentDialog.setVisible(true);
         searchStudentDialog.pack();
+        searchStudentDialog.setVisible(true);
     }
 
 
@@ -68,6 +70,7 @@ public class SearchStudentDialog {
                     {
                         JOptionPane.showMessageDialog(searchStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
+                        error=true;
                     }
                     else
                         try {
@@ -84,6 +87,7 @@ public class SearchStudentDialog {
                     {
                         JOptionPane.showMessageDialog(searchStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
+                        error=true;
                     }
                     else
                     {
@@ -105,6 +109,7 @@ public class SearchStudentDialog {
                     {
                         JOptionPane.showMessageDialog(searchStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
+                        error=true;
                     }
                     else
                     {

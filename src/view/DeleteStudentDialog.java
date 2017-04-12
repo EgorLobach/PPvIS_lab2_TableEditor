@@ -29,6 +29,7 @@ public class DeleteStudentDialog {
         deleteStudentDialog.setResizable(false);
         deleteStudentDialog.setLayout(new BorderLayout());
         deleteStudentButton.setFont(new Font("", Font.ITALIC,17));
+        deleteStudentDialog.setModal(true);
 
 
     }
@@ -37,9 +38,8 @@ public class DeleteStudentDialog {
         deleteStudentButton.addActionListener(new DeleteStudentButtonActionListener(controller));
         deleteStudentDialog.getContentPane().add(deleteTabbedPane.initSearchAndDeletePanel());
         deleteStudentDialog.getContentPane().add(deleteStudentButton, BorderLayout.SOUTH);
-
-        deleteStudentDialog.setVisible(true);
         deleteStudentDialog.pack();
+        deleteStudentDialog.setVisible(true);
     }
     private class DeleteStudentButtonActionListener implements ActionListener {
 
