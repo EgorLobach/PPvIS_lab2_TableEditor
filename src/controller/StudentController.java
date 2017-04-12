@@ -50,4 +50,38 @@ public class StudentController {
         }
         return count;
     }
+
+    public StudentDataBase searchByHouseNumberAndLastName(String surname1, int house) {
+        StudentDataBase tempStudentDataBase = new StudentDataBase();
+
+        for (int i =0; i<studentDataBase.size();i++)
+        {
+            if (studentDataBase.get(i).getSurName().equals(surname1)&&studentDataBase.get(i).getAddress().getHouse()==house)
+            tempStudentDataBase.add(studentDataBase.get(i));
+        }
+
+        return tempStudentDataBase;
+    }
+
+    public StudentDataBase searchByStreetAndApartment(String street, int apartment) {
+        StudentDataBase tempStudentDataBase = new StudentDataBase();
+
+        for (int i =0; i<studentDataBase.size();i++)
+        {
+            if (studentDataBase.get(i).getAddress().getStreet().equals(street)&&studentDataBase.get(i).getAddress().getApartment()==apartment)
+                tempStudentDataBase.add(studentDataBase.get(i));
+        }
+
+        return tempStudentDataBase;
+    }
+
+    public StudentDataBase searchByNameAndNumbersFoundInTheRoomNumber(String surname2, int numberInHouse) {//доделать по цифрам встречающимся в номере дома
+        StudentDataBase tempStudentDataBase = new StudentDataBase();
+        for (int i =0; i<studentDataBase.size();i++)
+        {
+            if (studentDataBase.get(i).getSurName().equals(surname2)&&studentDataBase.get(i).getAddress().getHouse()==numberInHouse)
+                tempStudentDataBase.add(studentDataBase.get(i));
+        }
+        return tempStudentDataBase;
+    }
 }

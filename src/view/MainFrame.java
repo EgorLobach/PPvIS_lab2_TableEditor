@@ -48,8 +48,6 @@ public class MainFrame {
 
     public MainFrame(String title, Dimension d, StudentController studentController, StudentDataBase studentDataBase)
     {
-        studentDataBase.add(new Student("Лобач", "Егор","Валентинович","Беларусь",
-                "Минская область", "Минск", "Ташкентская", 18,4,81));
         this.studentController=studentController;
         this.studentDataBase=studentDataBase;
         headFrame.setTitle(title);
@@ -96,7 +94,7 @@ public class MainFrame {
             addStudentDialog.initAddStudentDialog();
         } );
         searchButton.addActionListener(e -> {
-            SearchStudentDialog searchStudentDialog = new SearchStudentDialog();
+            SearchStudentDialog searchStudentDialog = new SearchStudentDialog(studentController, MainFrame.this);
             searchStudentDialog.initSearchStudentDialog();
         });
         deleteButton.addActionListener(e -> {

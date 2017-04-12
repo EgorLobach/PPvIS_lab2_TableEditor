@@ -98,10 +98,10 @@ public class SearchAndDeleteTabbedPanel {
         byHouseNumberAndLastNamePanel.add(surname1TextField, new GridBagConstraints(1, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        byHouseNumberAndLastNamePanel.add(houseLabel, new GridBagConstraints(0, 1, 1, 1, 1 , 1,
+        byHouseNumberAndLastNamePanel.add(houseLabel, new GridBagConstraints(2, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        byHouseNumberAndLastNamePanel.add(houseTextField, new GridBagConstraints(1, 1, 1, 1, 1 , 1,
+        byHouseNumberAndLastNamePanel.add(houseTextField, new GridBagConstraints(3, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
 
@@ -112,10 +112,10 @@ public class SearchAndDeleteTabbedPanel {
         byStreetAndApartmentPanel.add(streetTextField, new GridBagConstraints(1, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        byStreetAndApartmentPanel.add(apartmentLabel, new GridBagConstraints(0, 1, 1, 1, 1 , 1,
+        byStreetAndApartmentPanel.add(apartmentLabel, new GridBagConstraints(2, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        byStreetAndApartmentPanel.add(apartmentTextField, new GridBagConstraints(1, 1, 1, 1, 1 , 1,
+        byStreetAndApartmentPanel.add(apartmentTextField, new GridBagConstraints(3, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
 
@@ -126,10 +126,10 @@ public class SearchAndDeleteTabbedPanel {
         byNameAndNumbersFoundInTheRoomNumberPanel.add(surname2TextField, new GridBagConstraints(1, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        byNameAndNumbersFoundInTheRoomNumberPanel.add(numbersInHouseLabel, new GridBagConstraints(0, 1, 1, 1, 1 , 1,
+        byNameAndNumbersFoundInTheRoomNumberPanel.add(numbersInHouseLabel, new GridBagConstraints(2, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        byNameAndNumbersFoundInTheRoomNumberPanel.add(numbersInHouseTextField, new GridBagConstraints(1, 1, 1, 1, 1 , 1,
+        byNameAndNumbersFoundInTheRoomNumberPanel.add(numbersInHouseTextField, new GridBagConstraints(3, 0, 1, 1, 1 , 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
 
