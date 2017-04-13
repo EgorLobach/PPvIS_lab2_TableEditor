@@ -59,6 +59,7 @@ public class TableOfStudents {
         if (studentDataBase.size()==0)
             numberOfPage=1;
         else numberOfPage = (int) Math.ceil((float)studentDataBase.size()/maxNumberOfStudentPerPage);
+        if (currentPage>numberOfPage) currentPage=numberOfPage;
         nextPageButton.setEnabled(currentPage!=numberOfPage);
         prevPageButton.setEnabled(currentPage!=1);
         firstPageButton.setEnabled(currentPage!=1);
