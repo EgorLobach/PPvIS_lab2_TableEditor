@@ -8,6 +8,10 @@ import model.StudentDataBase;
  */
 public class StudentController {
     private StudentDataBase studentDataBase;
+    public StudentDataBase getStudentDataBase()
+    {
+        return studentDataBase;
+    }
 
     public StudentController(StudentDataBase studentDataBase)
     {

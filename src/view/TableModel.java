@@ -1,11 +1,9 @@
 package view;
 
-import model.Student;
 import model.StudentDataBase;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by anonymous on 10.04.2017.
@@ -13,30 +11,28 @@ import java.util.List;
 public class TableModel extends AbstractTableModel {
     private int columnCount = 8;
     private ArrayList<TableRow> tableData;
-    String colNames[] = {"ФИО", "Страна", "Область", "Город", "Улица", "Дом", "Корпус", "Квартира"};
 
     TableModel()
     {
         this.tableData = new ArrayList<TableRow>();
     }
 
-
-    public void addStudent(StudentDataBase studentDataBase)
+    public void addStudent(StudentDataBase studentDataBase, int currentPage, int maxNumberOfStudentPerPage)
     {
         deleteAllStudent();
-        for (int i=0; i<studentDataBase.size();i++)
-        tableData.add(new TableRow(studentDataBase.get(i)));
-    }
-    public void addStudent(Student student)
-    {
-        tableData.add(new TableRow(student));
+
+        int tempBegin = (currentPage-1)*maxNumberOfStudentPerPage;
+        int temp= tempBegin+maxNumberOfStudentPerPage;
+        int tempEnd;
+        if (studentDataBase.size()==0||studentDataBase.size()<temp)
+            tempEnd=studentDataBase.size();
+        else tempEnd=temp;
+        for (int i=tempBegin; i<tempEnd;i++)
+            tableData.add(new TableRow(studentDataBase.get(i)));
     }
     public void deleteAllStudent()
     {
-        for (int i=0;i<tableData.size();i++)
-        {
-            tableData.remove(i);
-        }
+        tableData.clear();
     }
 
     @Override
@@ -69,5 +65,9 @@ public class TableModel extends AbstractTableModel {
             case 7: return "Квартира";
         }
         return "";
+    }
+    public int getSize()
+    {
+        return tableData.size();
     }
 }

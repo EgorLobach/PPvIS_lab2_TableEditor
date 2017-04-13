@@ -1,6 +1,7 @@
 package view;
 
 import controller.*;
+import model.Address;
 import model.Student;
 import model.StudentDataBase;
 
@@ -13,20 +14,14 @@ import java.awt.*;
 public class MainFrame {
     private StudentController studentController;
     private StudentDataBase studentDataBase;
-    private String title;
     private Dimension d;
 
     //MenuBar
-    private JMenu searchMenu = new JMenu("Найти");
-    private JMenuItem searchByHouseNumberAndLastName = new JMenuItem("По номеру дома и фамилии");
-    private JMenuItem searchByStreetAndApartment = new JMenuItem("По улице и квартире");
-    private JMenuItem searchByNameAndNumbersFoundInTheRoomNumber = new JMenuItem("По фамилии и цифрам встречающемся в номере дома");
-    private JMenu deleteMenu = new JMenu("Удалить");
-    private JMenuItem deleteByHouseNumberAndLastName = new JMenuItem("По номеру дома и фамилии");
-    private JMenuItem deleteByStreetAndApartment = new JMenuItem("По улице и квартире");
-    private JMenuItem deleteByNameAndNumbersFoundInTheRoomNumber = new JMenuItem("По фамилии и цифрам встречающемся в номере дома");
-    private JMenuItem exitMenuItem = new JMenuItem("Выход");
+    private JMenu studentMenu = new JMenu("Студент");
     private JMenu fileMenu = new JMenu("Файл");
+    private JMenuItem searchMenuItem = new JMenuItem("Найти");
+    private JMenuItem deleteMenuItem = new JMenuItem("Удалить");
+    private JMenuItem exitMenuItem = new JMenuItem("Выход");
     private JMenuItem openMenuItem = new JMenuItem("Открыть");
     private JMenuItem addStudentMenuItem = new JMenuItem("Добавить");
     private JMenuItem saveMenuItem = new JMenuItem("Сохранить");
@@ -46,10 +41,10 @@ public class MainFrame {
     private JFrame headFrame = new JFrame();
     private TableOfStudents tableOfStudents;
 
-    public MainFrame(String title, Dimension d, StudentController studentController, StudentDataBase studentDataBase)
+    public MainFrame(String title, Dimension d, StudentController studentController)
     {
         this.studentController=studentController;
-        this.studentDataBase=studentDataBase;
+        this.studentDataBase=studentController.getStudentDataBase();
         headFrame.setTitle(title);
         headFrame.setSize(d);
         headFrame.setLayout(new BorderLayout());
@@ -57,6 +52,11 @@ public class MainFrame {
         headFrame.addWindowListener(new ExitWindowListener());
         tableOfStudents = new TableOfStudents(studentDataBase);
         tableOfStudents.setPreferredSize(new Dimension(1900,800));
+        for (int i=1;i<=55;i++)
+        {
+            studentController.addStudent(new Student(String.valueOf(i), String.valueOf(i),String.valueOf(i),
+                    String.valueOf(i),String.valueOf(i),String.valueOf(i),String.valueOf(i),i,i,i));
+        }
 
 
     }
@@ -64,21 +64,28 @@ public class MainFrame {
     public void initMainFrame()
     {
         //MenuBar
+        exitMenuItem.addActionListener(new ExitActionListener());
+        addStudentMenuItem.addActionListener(e -> {
+            AddStudentDialog addStudentDialog = new AddStudentDialog(studentController, MainFrame.this);
+            addStudentDialog.initAddStudentDialog();
+        } );
+        searchMenuItem.addActionListener(e -> {
+            SearchStudentDialog searchStudentDialog = new SearchStudentDialog(studentController, MainFrame.this);
+            searchStudentDialog.initSearchStudentDialog();
+        });
+        deleteMenuItem.addActionListener(e -> {
+            DeleteStudentDialog deleteStudentDialog = new DeleteStudentDialog(studentController, MainFrame.this);
+            deleteStudentDialog.initDeleteStudentDialog();
+        });
         fileMenu.add(openMenuItem);
         fileMenu.add(saveMenuItem);
-        fileMenu.add(addStudentMenuItem);
         fileMenu.addSeparator();
-        searchMenu.add(searchByHouseNumberAndLastName);
-        searchMenu.add(searchByStreetAndApartment);
-        searchMenu.add(searchByNameAndNumbersFoundInTheRoomNumber);
-        deleteMenu.add(deleteByHouseNumberAndLastName);
-        deleteMenu.add(deleteByStreetAndApartment);
-        deleteMenu.add(deleteByNameAndNumbersFoundInTheRoomNumber);
         exitMenuItem.addActionListener(new ExitActionListener());
         fileMenu.add(exitMenuItem);
+        studentMenu.add(searchMenuItem);
+        studentMenu.add(deleteMenuItem);
         menuBar.add(fileMenu);
-        menuBar.add(searchMenu);
-        menuBar.add(deleteMenu);
+        menuBar.add(studentMenu);
 
         //ToolBar
         openButton.setSize(24,24);
@@ -116,7 +123,6 @@ public class MainFrame {
         headFrame.add(toolBar, BorderLayout.NORTH);
         headFrame.add(tableOfStudents.initTableOfStudents());
         headFrame.setJMenuBar(menuBar);
-
 
         headFrame.pack();
         headFrame.setVisible(true);
