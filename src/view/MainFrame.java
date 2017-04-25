@@ -59,6 +59,8 @@ public class MainFrame {
     {
         //MenuBar
         exitMenuItem.addActionListener(new ExitActionListener());
+        openMenuItem.addActionListener(new OpenFileListener(studentController, MainFrame.this));
+        saveMenuItem.addActionListener(new SaveFileListener(studentController, MainFrame.this));
         addStudentMenuItem.addActionListener(e -> {
             AddStudentDialog addStudentDialog = new AddStudentDialog(studentController, MainFrame.this);
             addStudentDialog.initAddStudentDialog();
