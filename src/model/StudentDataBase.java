@@ -17,6 +17,8 @@ public class StudentDataBase {
         studentArrayList.remove(index);
     }
 
+    public void clear (){studentArrayList.clear();}
+
     public int size() {
         return studentArrayList.size();
     }

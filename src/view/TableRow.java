@@ -14,7 +14,7 @@ public class TableRow {
     public static final int STREET_COLUMN = 4;
     public static final int HOUSE_COLUMN = 5;
     public static final int HOUSING_COLUMN = 6;
-    public static final int APARTAMENT_COLUMN = 7;
+    public static final int APARTMENT_COLUMN = 7;
     String fullName;
     private String country;  //страна
     private String region;   //область
@@ -48,7 +48,7 @@ public class TableRow {
             case STREET_COLUMN: return street;
             case HOUSE_COLUMN: return house;
             case HOUSING_COLUMN: return housing;
-            case APARTAMENT_COLUMN: return apartment;
+            case APARTMENT_COLUMN: return apartment;
         }
         return null;
     }

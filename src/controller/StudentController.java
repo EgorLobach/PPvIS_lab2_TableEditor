@@ -88,4 +88,10 @@ public class StudentController {
         }
         return tempStudentDataBase;
     }
+
+    public void changeData(StudentDataBase studentDataBase) {
+        this.studentDataBase.clear();
+        for (int i =0; i<studentDataBase.size(); i++)
+            this.studentDataBase.add(studentDataBase.get(i));
+    }
 }

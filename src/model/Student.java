@@ -14,13 +14,13 @@ public class Student{
 
 
 
-        public Student(String surName, String firstName, String lastName,
+        public Student(String surName, String firstName, String secondName,
                        String country, String region, String city, String street,
                        int house, int housing, int apartment)
         {
             this.surName=surName;
             this.firstName=firstName;
-            this.secondName =lastName;
+            this.secondName =secondName;
             this.address=new Address(country, region, city, street, house, housing,apartment);
         }
 

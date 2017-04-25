@@ -52,12 +52,6 @@ public class MainFrame {
         headFrame.addWindowListener(new ExitWindowListener());
         tableOfStudents = new TableOfStudents(studentDataBase);
         tableOfStudents.setPreferredSize(new Dimension(1900,800));
-        for (int i=1;i<=55;i++)
-        {
-            studentController.addStudent(new Student(String.valueOf(i), String.valueOf(i),String.valueOf(i),
-                    String.valueOf(i),String.valueOf(i),String.valueOf(i),String.valueOf(i),i,i,i));
-        }
-
 
     }
 
@@ -96,6 +90,8 @@ public class MainFrame {
         refreshButton.setSize(24,24);
         exitButton.setSize(24,24);
         exitButton.addActionListener(new ExitActionListener());
+        openButton.addActionListener(new OpenFileListener(studentController, MainFrame.this));
+        saveButton.addActionListener(new SaveFileListener(studentController, MainFrame.this));
         addButton.addActionListener(e -> {
             AddStudentDialog addStudentDialog = new AddStudentDialog(studentController, MainFrame.this);
             addStudentDialog.initAddStudentDialog();
