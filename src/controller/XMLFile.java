@@ -78,6 +78,7 @@ public class XMLFile {
             transformer.transform(source, result);
         }
     }
+
     public void readFile() {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         try {

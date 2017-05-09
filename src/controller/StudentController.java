@@ -8,13 +8,12 @@ import model.StudentDataBase;
  */
 public class StudentController {
     private StudentDataBase studentDataBase;
-    public StudentDataBase getStudentDataBase()
-    {
+
+    public StudentDataBase getStudentDataBase() {
         return studentDataBase;
     }
 
-    public StudentController(StudentDataBase studentDataBase)
-    {
+    public StudentController(StudentDataBase studentDataBase) {
         this.studentDataBase = studentDataBase;
     }
 
@@ -24,33 +23,33 @@ public class StudentController {
 
     public int deleteByHouseNumberAndLastName(String surname1, int house) {
         int count = 0;
-        for (int i =0; i<studentDataBase.size();i++)
-        {
-            if (studentDataBase.get(i).getSurName().equals(surname1)&&studentDataBase.get(i).getAddress().getHouse()==house)
-            {studentDataBase.delete(i);
-                count++;}
+        for (int i = 0; i < studentDataBase.size(); i++) {
+            if (studentDataBase.get(i).getSurName().equals(surname1) && studentDataBase.get(i).getAddress().getHouse() == house) {
+                studentDataBase.delete(i);
+                count++;
+            }
         }
         return count;
     }
 
     public int deleteByStreetAndApartment(String street, int apartment) {
         int count = 0;
-        for (int i =0; i<studentDataBase.size();i++)
-        {
-            if (studentDataBase.get(i).getAddress().getStreet().equals(street)&&studentDataBase.get(i).getAddress().getApartment()==apartment)
-            {studentDataBase.delete(i);
-                count++;}
+        for (int i = 0; i < studentDataBase.size(); i++) {
+            if (studentDataBase.get(i).getAddress().getStreet().equals(street) && studentDataBase.get(i).getAddress().getApartment() == apartment) {
+                studentDataBase.delete(i);
+                count++;
+            }
         }
         return count;
     }
 
     public int deleteByNameAndNumbersFoundInTheRoomNumber(String surname2, int numberInHouse) {//доделать по цифрам встречающимся в номере дома
         int count = 0;
-        for (int i =0; i<studentDataBase.size();i++)
-        {
-            if (studentDataBase.get(i).getSurName().equals(surname2)&&studentDataBase.get(i).getAddress().getHouse()==numberInHouse)
-            {studentDataBase.delete(i);
-                count++;}
+        for (int i = 0; i < studentDataBase.size(); i++) {
+            if (studentDataBase.get(i).getSurName().equals(surname2) && studentDataBase.get(i).getAddress().getHouse() == numberInHouse) {
+                studentDataBase.delete(i);
+                count++;
+            }
         }
         return count;
     }
@@ -58,10 +57,9 @@ public class StudentController {
     public StudentDataBase searchByHouseNumberAndLastName(String surname1, int house) {
         StudentDataBase tempStudentDataBase = new StudentDataBase();
 
-        for (int i =0; i<studentDataBase.size();i++)
-        {
-            if (studentDataBase.get(i).getSurName().equals(surname1)&&studentDataBase.get(i).getAddress().getHouse()==house)
-            tempStudentDataBase.add(studentDataBase.get(i));
+        for (int i = 0; i < studentDataBase.size(); i++) {
+            if (studentDataBase.get(i).getSurName().equals(surname1) && studentDataBase.get(i).getAddress().getHouse() == house)
+                tempStudentDataBase.add(studentDataBase.get(i));
         }
 
         return tempStudentDataBase;
@@ -70,9 +68,8 @@ public class StudentController {
     public StudentDataBase searchByStreetAndApartment(String street, int apartment) {
         StudentDataBase tempStudentDataBase = new StudentDataBase();
 
-        for (int i =0; i<studentDataBase.size();i++)
-        {
-            if (studentDataBase.get(i).getAddress().getStreet().equals(street)&&studentDataBase.get(i).getAddress().getApartment()==apartment)
+        for (int i = 0; i < studentDataBase.size(); i++) {
+            if (studentDataBase.get(i).getAddress().getStreet().equals(street) && studentDataBase.get(i).getAddress().getApartment() == apartment)
                 tempStudentDataBase.add(studentDataBase.get(i));
         }
 
@@ -81,9 +78,8 @@ public class StudentController {
 
     public StudentDataBase searchByNameAndNumbersFoundInTheRoomNumber(String surname2, int numberInHouse) {//доделать по цифрам встречающимся в номере дома
         StudentDataBase tempStudentDataBase = new StudentDataBase();
-        for (int i =0; i<studentDataBase.size();i++)
-        {
-            if (studentDataBase.get(i).getSurName().equals(surname2)&&studentDataBase.get(i).getAddress().getHouse()==numberInHouse)
+        for (int i = 0; i < studentDataBase.size(); i++) {
+            if (studentDataBase.get(i).getSurName().equals(surname2) && studentDataBase.get(i).getAddress().getHouse() == numberInHouse)
                 tempStudentDataBase.add(studentDataBase.get(i));
         }
         return tempStudentDataBase;
@@ -91,7 +87,7 @@ public class StudentController {
 
     public void changeData(StudentDataBase studentDataBase) {
         this.studentDataBase.clear();
-        for (int i =0; i<studentDataBase.size(); i++)
+        for (int i = 0; i < studentDataBase.size(); i++)
             this.studentDataBase.add(studentDataBase.get(i));
     }
 }

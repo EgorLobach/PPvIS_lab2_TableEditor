@@ -9,21 +9,20 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * Created by anonymous on 25.04.2017.
  */
-public class StudentFromFileHandler extends DefaultHandler{
-        private StudentDataBase studentDataBase = new StudentDataBase();
-        private Student student;
-        private StudentController studentController;
+public class StudentFromFileHandler extends DefaultHandler {
+    private StudentDataBase studentDataBase = new StudentDataBase();
+    private Student student;
+    private StudentController studentController;
 
-        StudentFromFileHandler(StudentController studentController)
-        {
-            student=null;
-            this.studentController=studentController;
-        }
+    StudentFromFileHandler(StudentController studentController) {
+        student = null;
+        this.studentController = studentController;
+    }
 
-        StudentDataBase getStudentDataBase()
-        {
-            return studentDataBase;
-        }
+    StudentDataBase getStudentDataBase() {
+        return studentDataBase;
+    }
+
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {

@@ -1,22 +1,23 @@
 package view;
 
-import controller.*;
-import model.Address;
+import controller.ExitActionListener;
+import controller.ExitWindowListener;
+import controller.StudentController;
 import model.Student;
-import model.StudentDataBase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by anonymous on 10.04.2017.
  */
 public class MainFrame {
     private StudentController studentController;
-    private StudentDataBase studentDataBase;
-    private Dimension d;
 
-    //MenuBar
+    private Random randomGenerator = new Random();
+
     private JMenu studentMenu = new JMenu("Студент");
     private JMenu fileMenu = new JMenu("Файл");
     private JMenuItem searchMenuItem = new JMenuItem("Найти");
@@ -25,46 +26,39 @@ public class MainFrame {
     private JMenuItem openMenuItem = new JMenuItem("Открыть");
     private JMenuItem addStudentMenuItem = new JMenuItem("Добавить");
     private JMenuItem saveMenuItem = new JMenuItem("Сохранить");
-    private JMenuBar menuBar =new JMenuBar();
+    private JMenuBar menuBar = new JMenuBar();
 
-    //ToolBar
     private JToolBar toolBar = new JToolBar(SwingConstants.HORIZONTAL);
     private JButton openButton = new JButton(new ImageIcon("resources/png/24x24/Folder.png"));
     private JButton addButton = new JButton(new ImageIcon("resources/png/24x24/Add.png"));
     private JButton saveButton = new JButton(new ImageIcon("resources/png/24x24/Save.png"));
     private JButton searchButton = new JButton(new ImageIcon("resources/png/24x24/View.png"));
     private JButton deleteButton = new JButton(new ImageIcon("resources/png/24x24/Delete.png"));
-    private JButton refreshButton = new JButton(new ImageIcon("resources/png/24x24/Refresh.png"));
     private JButton exitButton = new JButton(new ImageIcon("resources/png/24x24/Exit.png"));
-
 
     private JFrame headFrame = new JFrame();
     private TableOfStudents tableOfStudents;
 
-    public MainFrame(String title, Dimension d, StudentController studentController)
-    {
-        this.studentController=studentController;
-        this.studentDataBase=studentController.getStudentDataBase();
+    public MainFrame(String title, Dimension d, StudentController studentController) {
+        this.studentController = studentController;
         headFrame.setTitle(title);
         headFrame.setSize(d);
         headFrame.setLayout(new BorderLayout());
         headFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         headFrame.addWindowListener(new ExitWindowListener());
-        tableOfStudents = new TableOfStudents(studentDataBase);
-        tableOfStudents.setPreferredSize(new Dimension(1900,800));
+        tableOfStudents = new TableOfStudents(studentController.getStudentDataBase());
+        tableOfStudents.setPreferredSize(d);
 
     }
 
-    public void initMainFrame()
-    {
-        //MenuBar
+    public void initMainFrame() {
         exitMenuItem.addActionListener(new ExitActionListener());
         openMenuItem.addActionListener(new OpenFileListener(studentController, MainFrame.this));
         saveMenuItem.addActionListener(new SaveFileListener(studentController, MainFrame.this));
         addStudentMenuItem.addActionListener(e -> {
             AddStudentDialog addStudentDialog = new AddStudentDialog(studentController, MainFrame.this);
             addStudentDialog.initAddStudentDialog();
-        } );
+        });
         searchMenuItem.addActionListener(e -> {
             SearchStudentDialog searchStudentDialog = new SearchStudentDialog(studentController, MainFrame.this);
             searchStudentDialog.initSearchStudentDialog();
@@ -83,21 +77,19 @@ public class MainFrame {
         menuBar.add(fileMenu);
         menuBar.add(studentMenu);
 
-        //ToolBar
-        openButton.setSize(24,24);
-        addButton.setSize(24,24);
-        saveButton.setSize(24,24);
-        searchButton.setSize(24,24);
-        deleteButton.setSize(24,24);
-        refreshButton.setSize(24,24);
-        exitButton.setSize(24,24);
+        openButton.setSize(24, 24);
+        addButton.setSize(24, 24);
+        saveButton.setSize(24, 24);
+        searchButton.setSize(24, 24);
+        deleteButton.setSize(24, 24);
+        exitButton.setSize(24, 24);
         exitButton.addActionListener(new ExitActionListener());
         openButton.addActionListener(new OpenFileListener(studentController, MainFrame.this));
         saveButton.addActionListener(new SaveFileListener(studentController, MainFrame.this));
         addButton.addActionListener(e -> {
             AddStudentDialog addStudentDialog = new AddStudentDialog(studentController, MainFrame.this);
             addStudentDialog.initAddStudentDialog();
-        } );
+        });
         searchButton.addActionListener(e -> {
             SearchStudentDialog searchStudentDialog = new SearchStudentDialog(studentController, MainFrame.this);
             searchStudentDialog.initSearchStudentDialog();
@@ -106,17 +98,12 @@ public class MainFrame {
             DeleteStudentDialog deleteStudentDialog = new DeleteStudentDialog(studentController, MainFrame.this);
             deleteStudentDialog.initDeleteStudentDialog();
         });
-        refreshButton.addActionListener(e ->{
-            updateMainFrame();
-        });
         toolBar.add(openButton);
         toolBar.add(saveButton);
         toolBar.add(addButton);
         toolBar.add(searchButton);
         toolBar.add(deleteButton);
-        toolBar.add(refreshButton);
         toolBar.add(exitButton);
-
 
         headFrame.add(toolBar, BorderLayout.NORTH);
         headFrame.add(tableOfStudents.initTableOfStudents());
@@ -126,10 +113,79 @@ public class MainFrame {
         headFrame.setVisible(true);
     }
 
-
-    public void updateMainFrame(){
-        tableOfStudents.reloadTableOfStudent(studentDataBase);
+    public void updateMainFrame() {
+        tableOfStudents.reloadTableOfStudent(studentController.getStudentDataBase());
         tableOfStudents.updateUI();
+    }
+
+    private void tempAdd() {
+        ArrayList<String> tempSurName = new ArrayList<>();
+        tempSurName.add("Петров");
+        tempSurName.add("Иванов");
+        tempSurName.add("Сидоров");
+        tempSurName.add("Лукша");
+        tempSurName.add("Лукашевич");
+        tempSurName.add("Жук");
+        tempSurName.add("Касперович");
+        tempSurName.add("Лобач");
+        tempSurName.add("Кажернович");
+        tempSurName.add("Уткин");
+        tempSurName.add("Носик");
+
+        ArrayList<String> tempFirstName = new ArrayList<>();
+        tempFirstName.add("Петя");
+        tempFirstName.add("Иван");
+        tempFirstName.add("Егор");
+        tempFirstName.add("Максим");
+        tempFirstName.add("Саша");
+        tempFirstName.add("Коля");
+        tempFirstName.add("Настя");
+        tempFirstName.add("Карина");
+        tempFirstName.add("Илья");
+        tempFirstName.add("Василий");
+        tempFirstName.add("Виолета");
+
+        ArrayList<String> tempLastName = new ArrayList<>();
+        tempLastName.add("Петрович");
+        tempLastName.add("Егорыч");
+        tempLastName.add("Александрович");
+        tempLastName.add("Ильич");
+        tempLastName.add("Денисович");
+        tempLastName.add("Валентинович");
+        tempLastName.add("Валерьевич");
+        tempLastName.add("Иванович");
+        tempLastName.add("Романович");
+
+        ArrayList<String> tempRegion = new ArrayList<>();
+        tempRegion.add("Минск");
+        tempRegion.add("Гродно");
+        tempRegion.add("Витебск");
+        tempRegion.add("Могилёв");
+        tempRegion.add("Брест");
+        tempRegion.add("Гомель");
+
+        ArrayList<String> tempStreet = new ArrayList<>();
+        tempStreet.add("Колоса");
+        tempStreet.add("Богданович");
+        tempStreet.add("Независимости");
+        tempStreet.add("Победы");
+        tempStreet.add("Гагарина");
+        tempStreet.add("Машиностроителя");
+        tempStreet.add("Лобача");
+        tempStreet.add("Ракосовского");
+        tempStreet.add("Партизанская");
+
+        for (int i = 0; i < 1234; i++) {
+            int index = randomGenerator.nextInt(tempRegion.size());
+            Student studentTemp = new Student(tempSurName.get(randomGenerator.nextInt(tempSurName.size())),
+                    tempFirstName.get(randomGenerator.nextInt(tempFirstName.size())),
+                    tempLastName.get(randomGenerator.nextInt(tempLastName.size())), "Беларусь",
+                    tempRegion.get(index),
+                    tempRegion.get(index),
+                    tempStreet.get(randomGenerator.nextInt(tempStreet.size())), randomGenerator.nextInt(20) + 1,
+                    randomGenerator.nextInt(5) + 1, randomGenerator.nextInt(20) + 1);
+            studentController.addStudent(studentTemp);
+        }
     }
 
 }

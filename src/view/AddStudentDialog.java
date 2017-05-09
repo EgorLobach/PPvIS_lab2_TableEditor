@@ -43,40 +43,39 @@ public class AddStudentDialog {
     private JButton addStudentButton = new JButton("Добавить");
 
 
-    public AddStudentDialog(StudentController controller, MainFrame mainFrame)
-    {
-        this.controller=controller;
-        this.mainFrame=mainFrame;
+    public AddStudentDialog(StudentController controller, MainFrame mainFrame) {
+        this.controller = controller;
+        this.mainFrame = mainFrame;
         addStudentDialog.setTitle("Добавить");
-        addStudentDialog.setSize(700,600);
+        addStudentDialog.setSize(700, 600);
         addStudentDialog.setLocationRelativeTo(null);
         addStudentDialog.setLayout(new GridBagLayout());
         addStudentDialog.setResizable(false);
         addStudentDialog.setModal(true);
 
-        surNameTextField.setFont(new Font("", Font.ITALIC,17));
-        firstNameTextField.setFont(new Font("", Font.ITALIC,17));
-        secondNameTextField.setFont(new Font("", Font.ITALIC,17));
-        countryTextField.setFont(new Font("", Font.ITALIC,17));
-        regionTextField.setFont(new Font("", Font.ITALIC,17));
-        cityTextField.setFont(new Font("", Font.ITALIC,17));
-        streetTextField.setFont(new Font("", Font.ITALIC,17));
-        houseTextField.setFont(new Font("", Font.ITALIC,17));
-        housingTextField.setFont(new Font("", Font.ITALIC,17));
-        apartmentTextField.setFont(new Font("", Font.ITALIC,17));
+        surNameTextField.setFont(new Font("", Font.ITALIC, 17));
+        firstNameTextField.setFont(new Font("", Font.ITALIC, 17));
+        secondNameTextField.setFont(new Font("", Font.ITALIC, 17));
+        countryTextField.setFont(new Font("", Font.ITALIC, 17));
+        regionTextField.setFont(new Font("", Font.ITALIC, 17));
+        cityTextField.setFont(new Font("", Font.ITALIC, 17));
+        streetTextField.setFont(new Font("", Font.ITALIC, 17));
+        houseTextField.setFont(new Font("", Font.ITALIC, 17));
+        housingTextField.setFont(new Font("", Font.ITALIC, 17));
+        apartmentTextField.setFont(new Font("", Font.ITALIC, 17));
 
-        surNameLabel.setFont(new Font("", Font.ITALIC,17));
-        firstNameLabel.setFont(new Font("", Font.ITALIC,17));
-        secondNameLabel.setFont(new Font("", Font.ITALIC,17));
-        countryLabel.setFont(new Font("", Font.ITALIC,17));
-        regionLabel.setFont(new Font("", Font.ITALIC,17));
-        cityLabel.setFont(new Font("", Font.ITALIC,17));
-        streetLabel.setFont(new Font("", Font.ITALIC,17));
-        houseLabel.setFont(new Font("", Font.ITALIC,17));
-        housingLabel.setFont(new Font("", Font.ITALIC,17));
-        apartmentLabel.setFont(new Font("", Font.ITALIC,17));
+        surNameLabel.setFont(new Font("", Font.ITALIC, 17));
+        firstNameLabel.setFont(new Font("", Font.ITALIC, 17));
+        secondNameLabel.setFont(new Font("", Font.ITALIC, 17));
+        countryLabel.setFont(new Font("", Font.ITALIC, 17));
+        regionLabel.setFont(new Font("", Font.ITALIC, 17));
+        cityLabel.setFont(new Font("", Font.ITALIC, 17));
+        streetLabel.setFont(new Font("", Font.ITALIC, 17));
+        houseLabel.setFont(new Font("", Font.ITALIC, 17));
+        housingLabel.setFont(new Font("", Font.ITALIC, 17));
+        apartmentLabel.setFont(new Font("", Font.ITALIC, 17));
 
-        addStudentButton.setFont(new Font("", Font.ITALIC,17));
+        addStudentButton.setFont(new Font("", Font.ITALIC, 17));
 
         surNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         firstNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -90,74 +89,72 @@ public class AddStudentDialog {
         apartmentLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 
-
     }
 
-    public void initAddStudentDialog()
-    {
+    public void initAddStudentDialog() {
         addStudentButton.addActionListener(new AddStudentButtonActionListener(controller));
-        addStudentDialog.add(surNameLabel, new GridBagConstraints(0, 0, 1, 1, 1 , 1,
+        addStudentDialog.add(surNameLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(firstNameLabel, new GridBagConstraints(0, 1, 1, 1, 1 , 1,
+        addStudentDialog.add(firstNameLabel, new GridBagConstraints(0, 1, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(secondNameLabel, new GridBagConstraints(0, 2, 1, 1, 1 , 1,
+        addStudentDialog.add(secondNameLabel, new GridBagConstraints(0, 2, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(countryLabel, new GridBagConstraints(0, 3, 1, 1, 1 , 1,
+        addStudentDialog.add(countryLabel, new GridBagConstraints(0, 3, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(regionLabel, new GridBagConstraints(0, 4, 1, 1, 1 , 1,
+        addStudentDialog.add(regionLabel, new GridBagConstraints(0, 4, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(cityLabel, new GridBagConstraints(0, 5, 1, 1, 1 , 1,
+        addStudentDialog.add(cityLabel, new GridBagConstraints(0, 5, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(streetLabel, new GridBagConstraints(0, 6, 1, 1, 1 , 1,
+        addStudentDialog.add(streetLabel, new GridBagConstraints(0, 6, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(houseLabel, new GridBagConstraints(0, 7, 1, 1, 1 , 1,
+        addStudentDialog.add(houseLabel, new GridBagConstraints(0, 7, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(housingLabel, new GridBagConstraints(0, 8, 1, 1, 1 , 1,
+        addStudentDialog.add(housingLabel, new GridBagConstraints(0, 8, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(apartmentLabel, new GridBagConstraints(0, 9, 1, 1, 1 , 1,
+        addStudentDialog.add(apartmentLabel, new GridBagConstraints(0, 9, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
 
-        addStudentDialog.add(surNameTextField, new GridBagConstraints(1, 0, 1, 1, 1 , 1,
+        addStudentDialog.add(surNameTextField, new GridBagConstraints(1, 0, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(firstNameTextField, new GridBagConstraints(1, 1, 1, 1, 1 , 1,
+        addStudentDialog.add(firstNameTextField, new GridBagConstraints(1, 1, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(secondNameTextField, new GridBagConstraints(1, 2, 1, 1, 1 , 1,
+        addStudentDialog.add(secondNameTextField, new GridBagConstraints(1, 2, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(countryTextField, new GridBagConstraints(1, 3, 1, 1, 1 , 1,
+        addStudentDialog.add(countryTextField, new GridBagConstraints(1, 3, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(regionTextField, new GridBagConstraints(1, 4, 1, 1, 1 , 1,
+        addStudentDialog.add(regionTextField, new GridBagConstraints(1, 4, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(cityTextField, new GridBagConstraints(1, 5, 1, 1, 1 , 1,
+        addStudentDialog.add(cityTextField, new GridBagConstraints(1, 5, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(streetTextField, new GridBagConstraints(1, 6, 1, 1, 1 , 1,
+        addStudentDialog.add(streetTextField, new GridBagConstraints(1, 6, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(houseTextField, new GridBagConstraints(1, 7, 1, 1, 1 , 1,
+        addStudentDialog.add(houseTextField, new GridBagConstraints(1, 7, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(housingTextField, new GridBagConstraints(1, 8, 1, 1, 1 , 1,
+        addStudentDialog.add(housingTextField, new GridBagConstraints(1, 8, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(apartmentTextField, new GridBagConstraints(1, 9, 1, 1, 1 , 1,
+        addStudentDialog.add(apartmentTextField, new GridBagConstraints(1, 9, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
-        addStudentDialog.add(addStudentButton, new GridBagConstraints(0, 10, 2, 1, 1 , 1,
+        addStudentDialog.add(addStudentButton, new GridBagConstraints(0, 10, 2, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                 new Insets(1, 1, 1, 1), 0, 0));
 
@@ -167,8 +164,7 @@ public class AddStudentDialog {
 
     }
 
-    private class AddStudentButtonActionListener implements ActionListener
-    {
+    private class AddStudentButtonActionListener implements ActionListener {
 
         private final StudentController controller;
 
@@ -179,16 +175,13 @@ public class AddStudentDialog {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (surNameTextField.getText().isEmpty()|| firstNameTextField.getText().isEmpty()||
-                    secondNameTextField.getText().isEmpty()|| countryTextField.getText().isEmpty()|| regionTextField.getText().isEmpty()||
-                    cityTextField.getText().isEmpty()|| streetTextField.getText().isEmpty()|| houseTextField.getText().isEmpty()||
-                    housingTextField.getText().isEmpty()||apartmentTextField.getText().isEmpty())
-            {
+            if (surNameTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() ||
+                    secondNameTextField.getText().isEmpty() || countryTextField.getText().isEmpty() || regionTextField.getText().isEmpty() ||
+                    cityTextField.getText().isEmpty() || streetTextField.getText().isEmpty() || houseTextField.getText().isEmpty() ||
+                    housingTextField.getText().isEmpty() || apartmentTextField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(addStudentDialog, "Некоторые поля пустые",
                         "Error", JOptionPane.ERROR_MESSAGE);
-            }
-             else
-            {
+            } else {
                 try {
                     controller.addStudent(new Student(surNameTextField.getText(), firstNameTextField.getText(),
                             secondNameTextField.getText(), countryTextField.getText(), regionTextField.getText(),
@@ -201,9 +194,7 @@ public class AddStudentDialog {
                             "Добавлено", JOptionPane.INFORMATION_MESSAGE);
 
                     addStudentDialog.dispose();
-                }
-                catch (NumberFormatException exception)
-                {
+                } catch (NumberFormatException exception) {
                     JOptionPane.showMessageDialog(addStudentDialog, "Несоответствие данных",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }

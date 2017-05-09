@@ -14,8 +14,8 @@ import java.awt.event.KeyListener;
  */
 public class TableOfStudents {
 
-    public  int maxNumberOfStudentPerPage = 20;
-    private TableModel tableModel= new TableModel();
+    public int maxNumberOfStudentPerPage = 20;
+    private TableModel tableModel = new TableModel();
     private JTable tableOfStudent = new JTable(tableModel);
     private JScrollPane tableScrollPane = new JScrollPane(tableOfStudent);
     private JPanel tablePanel = new JPanel(new BorderLayout());
@@ -37,9 +37,8 @@ public class TableOfStudents {
     private StudentDataBase studentDataBase = new StudentDataBase();
 
 
-    TableOfStudents(StudentDataBase studentDataBase)
-    {
-        this.studentDataBase=studentDataBase;
+    TableOfStudents(StudentDataBase studentDataBase) {
+        this.studentDataBase = studentDataBase;
         reloadTableOfStudent(studentDataBase);
         nextPageButton.setFont(new Font("", Font.ITALIC, 17));
         prevPageButton.setFont(new Font("", Font.ITALIC, 17));
@@ -51,30 +50,30 @@ public class TableOfStudents {
         currentNumberOfStudentPerPageLabel.setFont(new Font("Current number of student per page", Font.ITALIC, 17));
         totalNumberOfStudentLabel.setFont(new Font("Total number of student", Font.ITALIC, 17));
         numberOfPageLabel.setFont(new Font("Number of Page", Font.ITALIC, 17));
-        tableModel.addStudent(studentDataBase, currentPage, maxNumberOfStudentPerPage);
+        tableModel.addStudent(this.studentDataBase, currentPage, maxNumberOfStudentPerPage);
 
     }
-    public void reloadTableOfStudent(StudentDataBase studentDataBase)
-    {
-        if (studentDataBase.size()==0)
-            numberOfPage=1;
-        else numberOfPage = (int) Math.ceil((float)studentDataBase.size()/maxNumberOfStudentPerPage);
-        if (currentPage>numberOfPage) currentPage=numberOfPage;
-        nextPageButton.setEnabled(currentPage!=numberOfPage);
-        prevPageButton.setEnabled(currentPage!=1);
-        firstPageButton.setEnabled(currentPage!=1);
-        lastPageButton.setEnabled(currentPage!=numberOfPage);
-        currentNumberOfPageLabel.setText("---"+String.valueOf(currentPage)+"---");
+
+    public void reloadTableOfStudent(StudentDataBase studentDataBase) {
+        this.studentDataBase = studentDataBase;
+        if (this.studentDataBase.size() == 0)
+            numberOfPage = 1;
+        else numberOfPage = (int) Math.ceil((float) this.studentDataBase.size() / maxNumberOfStudentPerPage);
+        if (currentPage > numberOfPage) currentPage = numberOfPage;
+        nextPageButton.setEnabled(currentPage != numberOfPage);
+        prevPageButton.setEnabled(currentPage != 1);
+        firstPageButton.setEnabled(currentPage != 1);
+        lastPageButton.setEnabled(currentPage != numberOfPage);
+        currentNumberOfPageLabel.setText("---" + String.valueOf(currentPage) + "---");
         tableModel.deleteAllStudent();
-        tableModel.addStudent(studentDataBase, currentPage, maxNumberOfStudentPerPage);
-        currentNumberOfStudentPerPageLabel.setText("*Текущее количество записей: "+String.valueOf(tableModel.getSize()));
-        totalNumberOfStudentLabel.setText("*Общее количество записей: "+String.valueOf(studentDataBase.size()));
-        numberOfPageLabel.setText("*Количество страниц: "+String.valueOf(numberOfPage));
+        tableModel.addStudent(this.studentDataBase, currentPage, maxNumberOfStudentPerPage);
+        currentNumberOfStudentPerPageLabel.setText("*Текущее количество записей: " + String.valueOf(tableModel.getSize()));
+        totalNumberOfStudentLabel.setText("*Общее количество записей: " + String.valueOf(this.studentDataBase.size()));
+        numberOfPageLabel.setText("*Количество страниц: " + String.valueOf(numberOfPage));
     }
 
 
-    public JPanel initTableOfStudents()
-    {
+    public JPanel initTableOfStudents() {
         nextPageButton.addActionListener(new NextPageButtonActionListener());
         prevPageButton.addActionListener(new PrevPageButtonActionListener());
         firstPageButton.addActionListener(new FirstPageButtonActionListener());
@@ -82,7 +81,8 @@ public class TableOfStudents {
         maxNumberOfStudentPerPageTextField.addKeyListener(new MaxNumberKeyListener());
         tableOfStudent.setRowHeight(20);
         tableOfStudent.setFont(new Font("Table Of Student", Font.ITALIC, 17));
-        tableOfStudent.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableOfStudent.getColumnModel().getColumn(0).setPreferredWidth(300);
+        tableOfStudent.getColumnModel().getColumn(0).setMaxWidth(300);
 
         pageButtonPanel.add(firstPageButton);
         pageButtonPanel.add(prevPageButton);
@@ -103,8 +103,7 @@ public class TableOfStudents {
     }
 
 
-    public void setPreferredSize (Dimension dimension)
-    {
+    public void setPreferredSize(Dimension dimension) {
         tableScrollPane.setPreferredSize(dimension);
     }
 
@@ -114,8 +113,7 @@ public class TableOfStudents {
         tableScrollPane.updateUI();
     }
 
-    private class NextPageButtonActionListener implements ActionListener
-    {
+    private class NextPageButtonActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -124,7 +122,8 @@ public class TableOfStudents {
             updateUI();
         }
     }
-    private class PrevPageButtonActionListener implements ActionListener{
+
+    private class PrevPageButtonActionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -137,7 +136,7 @@ public class TableOfStudents {
     private class FirstPageButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            currentPage=1;
+            currentPage = 1;
             reloadTableOfStudent(studentDataBase);
             updateUI();
         }
@@ -146,7 +145,7 @@ public class TableOfStudents {
     private class LastPageButtonActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            currentPage=numberOfPage;
+            currentPage = numberOfPage;
             reloadTableOfStudent(studentDataBase);
             updateUI();
         }
@@ -160,15 +159,12 @@ public class TableOfStudents {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-                if (Integer.parseInt(maxNumberOfStudentPerPageTextField.getText())<1)
-                {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if (Integer.parseInt(maxNumberOfStudentPerPageTextField.getText()) < 1) {
                     JOptionPane.showMessageDialog(tableOfStudent, "Маловато", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else
-                {
+                } else {
                     maxNumberOfStudentPerPage = Integer.parseInt(maxNumberOfStudentPerPageTextField.getText());
-                    currentPage=1;
+                    currentPage = 1;
                     reloadTableOfStudent(studentDataBase);
                     updateUI();
                 }

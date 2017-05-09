@@ -17,30 +17,30 @@ public class DeleteStudentDialog {
     private SearchAndDeleteTabbedPanel deleteTabbedPane = new SearchAndDeleteTabbedPanel();
     private JButton deleteStudentButton = new JButton("Удалить");
 
-    public DeleteStudentDialog(StudentController controller, MainFrame mainFrame)
-    {
+    public DeleteStudentDialog(StudentController controller, MainFrame mainFrame) {
 
-        this.controller=controller;
-        this.mainFrame=mainFrame;
+        this.controller = controller;
+        this.mainFrame = mainFrame;
         deleteStudentDialog.setTitle("Удалить");
-        deleteStudentDialog.setSize(700,600);
+        deleteStudentDialog.setSize(700, 600);
         deleteStudentDialog.setLocationRelativeTo(null);
         deleteStudentDialog.setLayout(new GridBagLayout());
         deleteStudentDialog.setResizable(false);
         deleteStudentDialog.setLayout(new BorderLayout());
-        deleteStudentButton.setFont(new Font("", Font.ITALIC,17));
+        deleteStudentButton.setFont(new Font("", Font.ITALIC, 17));
         deleteStudentDialog.setModal(true);
 
 
     }
-    public void initDeleteStudentDialog()
-    {
+
+    public void initDeleteStudentDialog() {
         deleteStudentButton.addActionListener(new DeleteStudentButtonActionListener(controller));
         deleteStudentDialog.getContentPane().add(deleteTabbedPane.initSearchAndDeletePanel());
         deleteStudentDialog.getContentPane().add(deleteStudentButton, BorderLayout.SOUTH);
         deleteStudentDialog.pack();
         deleteStudentDialog.setVisible(true);
     }
+
     private class DeleteStudentButtonActionListener implements ActionListener {
 
         private final StudentController controller;
@@ -52,84 +52,65 @@ public class DeleteStudentDialog {
         @Override
         public void actionPerformed(ActionEvent e) {
             int index = deleteTabbedPane.getSelectedIndex();
-            switch (index)
-            {
-                case 0:
-                    if(deleteTabbedPane.getSurname1().isEmpty()||deleteTabbedPane.getHouse().isEmpty())
-                    {
+            switch (index) {
+                case SearchAndDeleteTabbedPanel.PANEL_ONE:
+                    if (deleteTabbedPane.getSurname1().isEmpty() || deleteTabbedPane.getHouse().isEmpty()) {
                         JOptionPane.showMessageDialog(deleteStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else
-                    {
-                        try
-                        {
-                        int countDeleteStudent = controller.deleteByHouseNumberAndLastName(deleteTabbedPane.getSurname1(),
-                                Integer.parseInt(deleteTabbedPane.getHouse()));
+                    } else {
+                        try {
+                            int countDeleteStudent = controller.deleteByHouseNumberAndLastName(deleteTabbedPane.getSurname1(),
+                                    Integer.parseInt(deleteTabbedPane.getHouse()));
 
-                        mainFrame.updateMainFrame();
+                            mainFrame.updateMainFrame();
 
-                        JOptionPane.showMessageDialog(deleteStudentDialog, "Удалено записей "+ countDeleteStudent,
-                                "Удалено", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(deleteStudentDialog, "Удалено записей " + countDeleteStudent,
+                                    "Удалено", JOptionPane.INFORMATION_MESSAGE);
 
-                        deleteStudentDialog.dispose();
-                        }
-                        catch (NumberFormatException exception)
-                        {
+                            deleteStudentDialog.dispose();
+                        } catch (NumberFormatException exception) {
                             JOptionPane.showMessageDialog(deleteStudentDialog, "Несоответствие данных",
                                     "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     break;
-                case 1:
-                    if(deleteTabbedPane.getStreet().isEmpty()||deleteTabbedPane.getApartment().isEmpty())
-                    {
+                case SearchAndDeleteTabbedPanel.PANEL_TWO:
+                    if (deleteTabbedPane.getStreet().isEmpty() || deleteTabbedPane.getApartment().isEmpty()) {
                         JOptionPane.showMessageDialog(deleteStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else
-                    {
-                        try
-                        {
+                    } else {
+                        try {
                             int countDeleteStudent = controller.deleteByStreetAndApartment(deleteTabbedPane.getStreet(),
                                     Integer.parseInt(deleteTabbedPane.getApartment()));
 
                             mainFrame.updateMainFrame();
 
-                            JOptionPane.showMessageDialog(deleteStudentDialog, "Удалено записей "+ countDeleteStudent,
+                            JOptionPane.showMessageDialog(deleteStudentDialog, "Удалено записей " + countDeleteStudent,
                                     "Удалено", JOptionPane.INFORMATION_MESSAGE);
 
                             deleteStudentDialog.dispose();
-                        }
-                        catch (NumberFormatException exception)
-                        {
+                        } catch (NumberFormatException exception) {
                             JOptionPane.showMessageDialog(deleteStudentDialog, "Несоответствие данных",
                                     "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     break;
-                case 2:
-                    if(deleteTabbedPane.getSurname2().isEmpty()||deleteTabbedPane.getNumbersInHouse().isEmpty())
-                    {
+                case SearchAndDeleteTabbedPanel.PANEL_THREE:
+                    if (deleteTabbedPane.getSurname2().isEmpty() || deleteTabbedPane.getNumbersInHouse().isEmpty()) {
                         JOptionPane.showMessageDialog(deleteStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else
-                    {
-                        try
-                        {
+                    } else {
+                        try {
                             int countDeleteStudent = controller.deleteByNameAndNumbersFoundInTheRoomNumber(deleteTabbedPane.getSurname2(),
                                     Integer.parseInt(deleteTabbedPane.getNumbersInHouse()));
 
                             mainFrame.updateMainFrame();
 
-                            JOptionPane.showMessageDialog(deleteStudentDialog, "Удалено записей "+ countDeleteStudent,
+                            JOptionPane.showMessageDialog(deleteStudentDialog, "Удалено записей " + countDeleteStudent,
                                     "Удалено", JOptionPane.INFORMATION_MESSAGE);
 
                             deleteStudentDialog.dispose();
-                        }
-                        catch (NumberFormatException exception)
-                        {
+                        } catch (NumberFormatException exception) {
                             JOptionPane.showMessageDialog(deleteStudentDialog, "Несоответствие данных",
                                     "Error", JOptionPane.ERROR_MESSAGE);
                         }

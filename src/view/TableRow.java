@@ -8,47 +8,25 @@ import model.Student;
  */
 public class TableRow {
     public static final int FULLNAME_COLUMN = 0;
-    public static final int COUNTRY_COLUMN = 1;
-    public static final int REGION_COLUMN = 2;
-    public static final int CITY_COLUMN = 3;
-    public static final int STREET_COLUMN = 4;
-    public static final int HOUSE_COLUMN = 5;
-    public static final int HOUSING_COLUMN = 6;
-    public static final int APARTMENT_COLUMN = 7;
+    public static final int FULLADDDRESS_COLUMN = 1;
+
     String fullName;
-    private String country;  //страна
-    private String region;   //область
-    private String city;     //город
-    private String street;   //улица
-    private int house;       //дом
-    private int housing;     //корпус
-    private int apartment;   //квартира
+    String fullAddress;
 
-    public TableRow(Student student)
-    {
-        this.fullName = student.getSurName()+" "+student.getFirstName()+" "+student.getSecondName();
+    public TableRow(Student student) {
+        this.fullName = student.getSurName() + " " + student.getFirstName() + " " + student.getSecondName();
         Address address = student.getAddress();
-        this.country=address.getCountry();
-        this.region=address.getRegion();
-        this.city=address.getCity();
-        this.street=address.getStreet();
-        this.house=address.getHouse();
-        this.housing=address.getHousing();
-        this.apartment=address.getApartment();
+        this.fullAddress = address.getCountry()+", обл."+address.getRegion()+", г."+address.getCity()+", ул."+
+                address.getStreet()+", д."+address.getHouse()+", кор."+address.getHousing()+", кв."+address.getApartment();
     }
-    public Object getValue(int columnIndex)
-    {
 
-        switch (columnIndex)
-        {
-            case FULLNAME_COLUMN: return fullName;
-            case COUNTRY_COLUMN: return country;
-            case REGION_COLUMN: return region;
-            case CITY_COLUMN: return city;
-            case STREET_COLUMN: return street;
-            case HOUSE_COLUMN: return house;
-            case HOUSING_COLUMN: return housing;
-            case APARTMENT_COLUMN: return apartment;
+    public Object getValue(int columnIndex) {
+
+        switch (columnIndex) {
+            case FULLNAME_COLUMN:
+                return fullName;
+            case FULLADDDRESS_COLUMN:
+                return fullAddress;
         }
         return null;
     }

@@ -17,31 +17,28 @@ public class SearchStudentDialog {
     private MainFrame mainFrame;
     private SearchAndDeleteTabbedPanel searchTabbedPane = new SearchAndDeleteTabbedPanel();
     private JButton searchButton = new JButton("Найти");
-    private TableOfStudents tableOfStudents;
     StudentDataBase searchStudentDataBase = new StudentDataBase();
+    private TableOfStudents tableOfStudents;
 
 
-
-    public SearchStudentDialog(StudentController controller, MainFrame mainFrame)
-    {
-        this.controller=controller;
-        this.mainFrame=mainFrame;
+    public SearchStudentDialog(StudentController controller, MainFrame mainFrame) {
+        this.controller = controller;
+        this.mainFrame = mainFrame;
         searchStudentDialog.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
         searchStudentDialog.setTitle("Найти");
-        searchStudentDialog.setSize(700,600);
+        searchStudentDialog.setSize(700, 600);
         searchStudentDialog.setLocationRelativeTo(null);
         searchStudentDialog.setLayout(new GridBagLayout());
         searchStudentDialog.setResizable(false);
         searchStudentDialog.setLayout(new BorderLayout());
-        searchButton.setFont(new Font("", Font.ITALIC,17));
+        searchButton.setFont(new Font("", Font.ITALIC, 17));
         tableOfStudents = new TableOfStudents(searchStudentDataBase);
         tableOfStudents.setPreferredSize(new Dimension(700, 400));
 
 
-
     }
-    public void initSearchStudentDialog()
-    {
+
+    public void initSearchStudentDialog() {
         searchStudentDialog.add(tableOfStudents.initTableOfStudents(), BorderLayout.SOUTH);
         searchButton.addActionListener(new SearchStudentButtonActionListener(controller));
         searchStudentDialog.getContentPane().add(searchTabbedPane.initSearchAndDeletePanel(), BorderLayout.NORTH);
@@ -56,87 +53,69 @@ public class SearchStudentDialog {
         private final StudentController controller;
 
         public SearchStudentButtonActionListener(StudentController controller) {
-            this.controller=controller;
+            this.controller = controller;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             int index = searchTabbedPane.getSelectedIndex();
             boolean error = false;
-            switch (index)
-            {
-                case 0:
-                    if(searchTabbedPane.getSurname1().isEmpty()||searchTabbedPane.getHouse().isEmpty())
-                    {
+            switch (index) {
+                case SearchAndDeleteTabbedPanel.PANEL_ONE:
+                    if (searchTabbedPane.getSurname1().isEmpty() || searchTabbedPane.getHouse().isEmpty()) {
                         JOptionPane.showMessageDialog(searchStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                        error=true;
-                    }
-                    else
+                        error = true;
+                    } else
                         try {
                             searchStudentDataBase = controller.searchByHouseNumberAndLastName(searchTabbedPane.getSurname1(),
                                     Integer.parseInt(searchTabbedPane.getHouse()));
                         } catch (NumberFormatException exception) {
                             JOptionPane.showMessageDialog(searchStudentDialog, "Несоответствие данных",
                                     "Error", JOptionPane.ERROR_MESSAGE);
-                            error=true;
+                            error = true;
                         }
                     break;
-                case 1:
-                    if(searchTabbedPane.getStreet().isEmpty()||searchTabbedPane.getApartment().isEmpty())
-                    {
+                case SearchAndDeleteTabbedPanel.PANEL_TWO:
+                    if (searchTabbedPane.getStreet().isEmpty() || searchTabbedPane.getApartment().isEmpty()) {
                         JOptionPane.showMessageDialog(searchStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                        error=true;
-                    }
-                    else
-                    {
-                        try
-                        {
+                        error = true;
+                    } else {
+                        try {
                             searchStudentDataBase = controller.searchByStreetAndApartment(searchTabbedPane.getStreet(),
                                     Integer.parseInt(searchTabbedPane.getApartment()));
-                        }
-                        catch (NumberFormatException exception)
-                        {
+                        } catch (NumberFormatException exception) {
                             JOptionPane.showMessageDialog(searchStudentDialog, "Несоответствие данных",
                                     "Error", JOptionPane.ERROR_MESSAGE);
-                            error=true;
+                            error = true;
                         }
                     }
                     break;
-                case 2:
-                    if(searchTabbedPane.getSurname2().isEmpty()||searchTabbedPane.getNumbersInHouse().isEmpty())
-                    {
+                case SearchAndDeleteTabbedPanel.PANEL_THREE:
+                    if (searchTabbedPane.getSurname2().isEmpty() || searchTabbedPane.getNumbersInHouse().isEmpty()) {
                         JOptionPane.showMessageDialog(searchStudentDialog, "Некоторые поля пустые",
                                 "Error", JOptionPane.ERROR_MESSAGE);
-                        error=true;
-                    }
-                    else
-                    {
-                        try
-                        {
+                        error = true;
+                    } else {
+                        try {
                             searchStudentDataBase = controller.searchByNameAndNumbersFoundInTheRoomNumber(searchTabbedPane.getSurname2(),
                                     Integer.parseInt(searchTabbedPane.getNumbersInHouse()));
 
-                        }
-                        catch (NumberFormatException exception)
-                        {
+                        } catch (NumberFormatException exception) {
                             JOptionPane.showMessageDialog(searchStudentDialog, "Несоответствие данных",
                                     "Error", JOptionPane.ERROR_MESSAGE);
-                            error=true;
+                            error = true;
                         }
                     }
                     break;
             }
-            if (error) {}
-            else if(searchStudentDataBase.size()==0)
-            {
+            if (error) {
+            } else if (searchStudentDataBase.size() == 0) {
                 JOptionPane.showMessageDialog(searchStudentDialog, "Записей не найдено",
                         "Результат", JOptionPane.INFORMATION_MESSAGE);
                 searchStudentDialog.dispose();
-            }
-            else
-            {
+            } else {
                 tableOfStudents.reloadTableOfStudent(searchStudentDataBase);
                 tableOfStudents.updateUI();
             }

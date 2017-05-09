@@ -19,9 +19,9 @@ public class SaveFileListener implements ActionListener {
     private StudentController studentController;
     private MainFrame mainFrame;
 
-    public SaveFileListener (StudentController studentController, MainFrame mainFrame) {
+    public SaveFileListener(StudentController studentController, MainFrame mainFrame) {
         fileChooser = new JFileChooser("D:\\work\\java\\PPvIS_sem2\\PPvIS_lab2_TableEditor\\file");
-        this.mainFrame=mainFrame;
+        this.mainFrame = mainFrame;
         this.studentController = studentController;
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "XML Формат", "xml");

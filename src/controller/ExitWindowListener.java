@@ -7,7 +7,7 @@ import java.awt.event.WindowListener;
 /**
  * Created by anonymous on 28.03.2017.
  */
-public class ExitWindowListener implements WindowListener{
+public class ExitWindowListener implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
 
@@ -18,7 +18,7 @@ public class ExitWindowListener implements WindowListener{
         int temp = JOptionPane.showConfirmDialog(new JFrame(),
                 "Желаете выйти?", "Выход",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (temp == 0){
+        if (temp == 0) {
             System.exit(0);
         }
     }

@@ -5,33 +5,34 @@ import model.StudentDataBase;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
+
 /**
  * Created by anonymous on 10.04.2017.
  */
 public class TableModel extends AbstractTableModel {
-    private int columnCount = 8;
+    public static final String FULLNAME = "ФИО";
+    public static final String FULLADDRESS = "Адресс";
+    private int columnCount = 2;
     private ArrayList<TableRow> tableData;
 
-    TableModel()
-    {
+    TableModel() {
         this.tableData = new ArrayList<TableRow>();
     }
 
-    public void addStudent(StudentDataBase studentDataBase, int currentPage, int maxNumberOfStudentPerPage)
-    {
+    public void addStudent(StudentDataBase studentDataBase, int currentPage, int maxNumberOfStudentPerPage) {
         deleteAllStudent();
 
-        int tempBegin = (currentPage-1)*maxNumberOfStudentPerPage;
-        int temp= tempBegin+maxNumberOfStudentPerPage;
+        int tempBegin = (currentPage - 1) * maxNumberOfStudentPerPage;
+        int temp = tempBegin + maxNumberOfStudentPerPage;
         int tempEnd;
-        if (studentDataBase.size()==0||studentDataBase.size()<temp)
-            tempEnd=studentDataBase.size();
-        else tempEnd=temp;
-        for (int i=tempBegin; i<tempEnd;i++)
+        if (studentDataBase.size() == 0 || studentDataBase.size() < temp)
+            tempEnd = studentDataBase.size();
+        else tempEnd = temp;
+        for (int i = tempBegin; i < tempEnd; i++)
             tableData.add(new TableRow(studentDataBase.get(i)));
     }
-    public void deleteAllStudent()
-    {
+
+    public void deleteAllStudent() {
         tableData.clear();
     }
 
@@ -50,24 +51,19 @@ public class TableModel extends AbstractTableModel {
         TableRow rows = tableData.get(rowIndex);
         return rows.getValue(columnIndex);
     }
+
     @Override
-    public String getColumnName(int columnIndex)
-    {
-        switch (columnIndex)
-        {
-            case 0: return "ФИО";
-            case 1: return "Страна";
-            case 2: return "Область";
-            case 3: return "Город";
-            case 4: return "Улица";
-            case 5: return "Дом";
-            case 6: return "Корпус";
-            case 7: return "Квартира";
+    public String getColumnName(int columnIndex) {
+        switch (columnIndex) {
+            case TableRow.FULLNAME_COLUMN:
+                return FULLNAME;
+            case TableRow.FULLADDDRESS_COLUMN:
+                return FULLADDRESS;
         }
         return "";
     }
-    public int getSize()
-    {
+
+    public int getSize() {
         return tableData.size();
     }
 }

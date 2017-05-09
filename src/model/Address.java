@@ -11,53 +11,53 @@ public class Address {
     private int house;       //дом
     private int housing;     //корпус
     private int apartment;   //квартира
-    public Address(String country, String region, String city, String street, int house, int housing, int apartment)
-    {
-        this.country=country;
-        this.region=region;
-        this.city=city;
-        this.street=street;
-        this.house=house;
-        this.housing=housing;
-        this.apartment=apartment;
+
+    public Address(String country, String region, String city, String street, int house, int housing, int apartment) {
+        this.country = country;
+        this.region = region;
+        this.city = city;
+        this.street = street;
+        this.house = house;
+        this.housing = housing;
+        this.apartment = apartment;
     }
-    public Address(Address address)
-    {
-        this.country=address.getCountry();
-        this.region=address.getRegion();
-        this.city=address.getCity();
-        this.street=address.getStreet();
-        this.house=address.getHouse();
-        this.housing=address.getHousing();
-        this.apartment=address.getApartment();
+
+    public Address(Address address) {
+        this.country = address.getCountry();
+        this.region = address.getRegion();
+        this.city = address.getCity();
+        this.street = address.getStreet();
+        this.house = address.getHouse();
+        this.housing = address.getHousing();
+        this.apartment = address.getApartment();
     }
-    public void setCountry(String country)
-    {
-        this.country=country;
+
+    public void setCountry(String country) {
+        this.country = country;
     }
-    public void setRegion(String region)
-    {
-        this.region=region;
+
+    public void setRegion(String region) {
+        this.region = region;
     }
-    public void setCity(String city)
-    {
-        this.city=city;
+
+    public void setCity(String city) {
+        this.city = city;
     }
-    public void setStreet(String street)
-    {
-        this.street=street;
+
+    public void setStreet(String street) {
+        this.street = street;
     }
-    public void setHouse(int house)
-    {
-        this.house=house;
+
+    public void setHouse(int house) {
+        this.house = house;
     }
-    public void setHousing(int housing)
-    {
-        this.housing=housing;
+
+    public void setHousing(int housing) {
+        this.housing = housing;
     }
-    public void setApartment(int apartment)
-    {
-        this.apartment=apartment;
+
+    public void setApartment(int apartment) {
+        this.apartment = apartment;
     }
 
     public int getApartment() {
@@ -88,17 +88,22 @@ public class Address {
         return street;
     }
 
-    public Object getValue(int index)
-    {
-        switch (index)
-        {
-            case 0: return country;
-            case 1: return region;
-            case 2: return city;
-            case 3: return street;
-            case 4: return house;
-            case 5: return housing;
-            case 6: return apartment;
+    public Object getValue(int index) {
+        switch (index) {
+            case 0:
+                return country;
+            case 1:
+                return region;
+            case 2:
+                return city;
+            case 3:
+                return street;
+            case 4:
+                return house;
+            case 5:
+                return housing;
+            case 6:
+                return apartment;
         }
         return null;
     }

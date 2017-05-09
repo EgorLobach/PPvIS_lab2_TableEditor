@@ -9,9 +9,8 @@ import java.awt.event.ActionListener;
  */
 public class ExitActionListener implements ActionListener {
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        int temp =JOptionPane.showConfirmDialog(new JFrame(),
+    public void actionPerformed(ActionEvent e) {
+        int temp = JOptionPane.showConfirmDialog(new JFrame(),
                 "Желаете выйти?", "Выход",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (temp == 0)
