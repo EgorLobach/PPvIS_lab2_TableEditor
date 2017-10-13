@@ -18,6 +18,7 @@ public class StudentController {
     }
 
     public void addStudent(Student student) {
+        student.setNumber(studentDataBase.size()+1);
         studentDataBase.add(student);
     }
 
@@ -83,11 +84,5 @@ public class StudentController {
                 tempStudentDataBase.add(studentDataBase.get(i));
         }
         return tempStudentDataBase;
-    }
-
-    void changeData(StudentDataBase studentDataBase) {
-        this.studentDataBase.clear();
-        for (int i = 0; i < studentDataBase.size(); i++)
-            this.studentDataBase.add(studentDataBase.get(i));
     }
 }

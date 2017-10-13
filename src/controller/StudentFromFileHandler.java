@@ -17,6 +17,7 @@ public class StudentFromFileHandler extends DefaultHandler {
     StudentFromFileHandler(StudentController studentController) {
         student = null;
         this.studentController = studentController;
+        studentController.getStudentDataBase().clear();
     }
 
     StudentDataBase getStudentDataBase() {
@@ -38,7 +39,7 @@ public class StudentFromFileHandler extends DefaultHandler {
             int housing = Integer.valueOf(attributes.getValue(XMLConst.HOUSING));
             int apartment = Integer.valueOf(attributes.getValue(XMLConst.APARTMENT));
             student = new Student(surName, firstName, lastName, country, region, city, street, house, housing, apartment);
-            studentDataBase.add(student);
+            studentController.addStudent(student);
         }
     }
 

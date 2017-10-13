@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Student {
 
+    private int number;
     private String surName;  //фамилия
     private String firstName;//имя
     private String secondName; //отчесвто
@@ -58,6 +59,13 @@ public class Student {
         return address;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 
     public Object getValue(int index) {
         switch (index) {

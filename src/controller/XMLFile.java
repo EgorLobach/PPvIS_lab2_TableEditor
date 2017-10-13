@@ -85,10 +85,6 @@ public class XMLFile {
             SAXParser saxParser = saxParserFactory.newSAXParser();
             StudentFromFileHandler studentFromFileHandler = new StudentFromFileHandler(studentController);
             saxParser.parse(new File(fileName), studentFromFileHandler);
-
-
-            StudentDataBase studentDataBase = studentFromFileHandler.getStudentDataBase();
-            studentController.changeData(studentDataBase);
         } catch (SAXException | ParserConfigurationException | IOException e) {
             e.printStackTrace();
         }

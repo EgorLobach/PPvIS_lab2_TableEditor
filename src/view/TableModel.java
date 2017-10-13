@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * Created by anonymous on 10.04.2017.
  */
 public class TableModel extends AbstractTableModel {
+    private static final String NUMBER = "№";
     private static final String FULLNAME = "ФИО";
     private static final String FULLADDRESS = "Адресс";
     private ArrayList<TableRow> tableData;
@@ -42,7 +43,7 @@ public class TableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -54,6 +55,8 @@ public class TableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex) {
         switch (columnIndex) {
+            case TableRow.NUMBER_COLUMN:
+                return NUMBER;
             case TableRow.FULLNAME_COLUMN:
                 return FULLNAME;
             case TableRow.FULLADDDRESS_COLUMN:
