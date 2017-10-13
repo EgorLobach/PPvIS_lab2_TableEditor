@@ -11,17 +11,17 @@ import java.awt.event.ActionListener;
 /**
  * Created by anonymous on 29.03.2017.
  */
-public class SearchStudentDialog {
+class SearchStudentDialog {
     private JDialog searchStudentDialog = new JDialog();
     private StudentController controller;
     private MainFrame mainFrame;
     private SearchAndDeleteTabbedPanel searchTabbedPane = new SearchAndDeleteTabbedPanel();
     private JButton searchButton = new JButton("Найти");
-    StudentDataBase searchStudentDataBase = new StudentDataBase();
+    private StudentDataBase searchStudentDataBase = new StudentDataBase();
     private TableOfStudents tableOfStudents;
 
 
-    public SearchStudentDialog(StudentController controller, MainFrame mainFrame) {
+    SearchStudentDialog(StudentController controller, MainFrame mainFrame) {
         this.controller = controller;
         this.mainFrame = mainFrame;
         searchStudentDialog.setModalityType(Dialog.DEFAULT_MODALITY_TYPE);
@@ -38,7 +38,7 @@ public class SearchStudentDialog {
 
     }
 
-    public void initSearchStudentDialog() {
+    void initSearchStudentDialog() {
         searchStudentDialog.add(tableOfStudents.initTableOfStudents(), BorderLayout.SOUTH);
         searchButton.addActionListener(new SearchStudentButtonActionListener(controller));
         searchStudentDialog.getContentPane().add(searchTabbedPane.initSearchAndDeletePanel(), BorderLayout.NORTH);
@@ -52,7 +52,7 @@ public class SearchStudentDialog {
     private class SearchStudentButtonActionListener implements ActionListener {
         private final StudentController controller;
 
-        public SearchStudentButtonActionListener(StudentController controller) {
+        SearchStudentButtonActionListener(StudentController controller) {
             this.controller = controller;
         }
 

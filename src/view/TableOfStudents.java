@@ -12,9 +12,9 @@ import java.awt.event.KeyListener;
 /**
  * Created by anonymous on 10.04.2017.
  */
-public class TableOfStudents {
+class TableOfStudents {
 
-    public int maxNumberOfStudentPerPage = 20;
+    private int maxNumberOfStudentPerPage = 20;
     private TableModel tableModel = new TableModel();
     private JTable tableOfStudent = new JTable(tableModel);
     private JScrollPane tableScrollPane = new JScrollPane(tableOfStudent);
@@ -54,7 +54,7 @@ public class TableOfStudents {
 
     }
 
-    public void reloadTableOfStudent(StudentDataBase studentDataBase) {
+    void reloadTableOfStudent(StudentDataBase studentDataBase) {
         this.studentDataBase = studentDataBase;
         if (this.studentDataBase.size() == 0)
             numberOfPage = 1;
@@ -73,7 +73,7 @@ public class TableOfStudents {
     }
 
 
-    public JPanel initTableOfStudents() {
+    JPanel initTableOfStudents() {
         nextPageButton.addActionListener(new NextPageButtonActionListener());
         prevPageButton.addActionListener(new PrevPageButtonActionListener());
         firstPageButton.addActionListener(new FirstPageButtonActionListener());
@@ -103,12 +103,12 @@ public class TableOfStudents {
     }
 
 
-    public void setPreferredSize(Dimension dimension) {
+    void setPreferredSize(Dimension dimension) {
         tableScrollPane.setPreferredSize(dimension);
     }
 
 
-    public void updateUI() {
+    void updateUI() {
         tableOfStudent.updateUI();
         tableScrollPane.updateUI();
     }

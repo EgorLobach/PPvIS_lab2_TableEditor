@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
 /**
  * Created by anonymous on 30.03.2017.
  */
-public class DeleteStudentDialog {
+class DeleteStudentDialog {
     private JDialog deleteStudentDialog = new JDialog();
     private StudentController controller;
     private MainFrame mainFrame;
     private SearchAndDeleteTabbedPanel deleteTabbedPane = new SearchAndDeleteTabbedPanel();
     private JButton deleteStudentButton = new JButton("Удалить");
 
-    public DeleteStudentDialog(StudentController controller, MainFrame mainFrame) {
+    DeleteStudentDialog(StudentController controller, MainFrame mainFrame) {
 
         this.controller = controller;
         this.mainFrame = mainFrame;
@@ -33,7 +33,7 @@ public class DeleteStudentDialog {
 
     }
 
-    public void initDeleteStudentDialog() {
+    void initDeleteStudentDialog() {
         deleteStudentButton.addActionListener(new DeleteStudentButtonActionListener(controller));
         deleteStudentDialog.getContentPane().add(deleteTabbedPane.initSearchAndDeletePanel());
         deleteStudentDialog.getContentPane().add(deleteStudentButton, BorderLayout.SOUTH);

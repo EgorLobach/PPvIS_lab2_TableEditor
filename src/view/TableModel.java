@@ -10,16 +10,15 @@ import java.util.ArrayList;
  * Created by anonymous on 10.04.2017.
  */
 public class TableModel extends AbstractTableModel {
-    public static final String FULLNAME = "ФИО";
-    public static final String FULLADDRESS = "Адресс";
-    private int columnCount = 2;
+    private static final String FULLNAME = "ФИО";
+    private static final String FULLADDRESS = "Адресс";
     private ArrayList<TableRow> tableData;
 
     TableModel() {
         this.tableData = new ArrayList<TableRow>();
     }
 
-    public void addStudent(StudentDataBase studentDataBase, int currentPage, int maxNumberOfStudentPerPage) {
+    void addStudent(StudentDataBase studentDataBase, int currentPage, int maxNumberOfStudentPerPage) {
         deleteAllStudent();
 
         int tempBegin = (currentPage - 1) * maxNumberOfStudentPerPage;
@@ -32,7 +31,7 @@ public class TableModel extends AbstractTableModel {
             tableData.add(new TableRow(studentDataBase.get(i)));
     }
 
-    public void deleteAllStudent() {
+    void deleteAllStudent() {
         tableData.clear();
     }
 
@@ -43,7 +42,7 @@ public class TableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return columnCount;
+        return 2;
     }
 
     @Override

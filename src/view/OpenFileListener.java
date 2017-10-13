@@ -16,7 +16,7 @@ public class OpenFileListener implements ActionListener {
     private JFileChooser fileChooser;
     private MainFrame mainFrame;
 
-    public OpenFileListener(StudentController studentController, MainFrame mainFrame) {
+    OpenFileListener(StudentController studentController, MainFrame mainFrame) {
         this.studentController = studentController;
         this.mainFrame = mainFrame;
         fileChooser = new JFileChooser("D:\\work\\java\\PPvIS_sem2\\PPvIS_lab2_TableEditor\\file");

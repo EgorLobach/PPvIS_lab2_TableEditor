@@ -12,7 +12,7 @@ public class Address {
     private int housing;     //корпус
     private int apartment;   //квартира
 
-    public Address(String country, String region, String city, String street, int house, int housing, int apartment) {
+    Address(String country, String region, String city, String street, int house, int housing, int apartment) {
         this.country = country;
         this.region = region;
         this.city = city;

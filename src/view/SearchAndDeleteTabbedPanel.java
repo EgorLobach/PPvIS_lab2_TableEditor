@@ -8,9 +8,9 @@ import java.awt.*;
  */
 public class SearchAndDeleteTabbedPanel {
 
-    public static final int PANEL_ONE = 0;
-    public static final int PANEL_TWO = 1;
-    public static final int PANEL_THREE = 2;
+    static final int PANEL_ONE = 0;
+    static final int PANEL_TWO = 1;
+    static final int PANEL_THREE = 2;
 
     private JTabbedPane searchAndDeleteTabbedPanel = new JTabbedPane();
 
@@ -33,15 +33,15 @@ public class SearchAndDeleteTabbedPanel {
     private JTextField apartmentTextField = new JTextField(20);
 
 
-    public int getSelectedIndex() {
+    int getSelectedIndex() {
         return searchAndDeleteTabbedPanel.getSelectedIndex();
     }
 
-    public String getSurname1() {
+    String getSurname1() {
         return surname1TextField.getText();
     }
 
-    public String getSurname2() {
+    String getSurname2() {
         return surname2TextField.getText();
     }
 
@@ -49,7 +49,7 @@ public class SearchAndDeleteTabbedPanel {
         return streetTextField.getText();
     }
 
-    public String getNumbersInHouse() {
+    String getNumbersInHouse() {
         return numbersInHouseTextField.getText();
     }
 
@@ -61,7 +61,7 @@ public class SearchAndDeleteTabbedPanel {
         return apartmentTextField.getText();
     }
 
-    public SearchAndDeleteTabbedPanel() {
+    SearchAndDeleteTabbedPanel() {
 
         byHouseNumberAndLastNamePanel.setLayout(new GridBagLayout());
         byStreetAndApartmentPanel.setLayout(new GridBagLayout());
@@ -91,7 +91,7 @@ public class SearchAndDeleteTabbedPanel {
         apartmentLabel.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    public JTabbedPane initSearchAndDeletePanel() {
+    JTabbedPane initSearchAndDeletePanel() {
 
         byHouseNumberAndLastNamePanel.add(surname1Label, new GridBagConstraints(0, 0, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,

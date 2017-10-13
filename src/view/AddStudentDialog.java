@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by anonymous on 29.03.2017.
  */
-public class AddStudentDialog {
+class AddStudentDialog {
     private JDialog addStudentDialog = new JDialog();
 
     private StudentController controller;
@@ -43,7 +43,7 @@ public class AddStudentDialog {
     private JButton addStudentButton = new JButton("Добавить");
 
 
-    public AddStudentDialog(StudentController controller, MainFrame mainFrame) {
+    AddStudentDialog(StudentController controller, MainFrame mainFrame) {
         this.controller = controller;
         this.mainFrame = mainFrame;
         addStudentDialog.setTitle("Добавить");
@@ -91,7 +91,7 @@ public class AddStudentDialog {
 
     }
 
-    public void initAddStudentDialog() {
+    void initAddStudentDialog() {
         addStudentButton.addActionListener(new AddStudentButtonActionListener(controller));
         addStudentDialog.add(surNameLabel, new GridBagConstraints(0, 0, 1, 1, 1, 1,
                 GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,

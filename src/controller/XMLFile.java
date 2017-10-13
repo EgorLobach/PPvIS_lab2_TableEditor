@@ -89,11 +89,7 @@ public class XMLFile {
 
             StudentDataBase studentDataBase = studentFromFileHandler.getStudentDataBase();
             studentController.changeData(studentDataBase);
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SAXException | ParserConfigurationException | IOException e) {
             e.printStackTrace();
         }
     }

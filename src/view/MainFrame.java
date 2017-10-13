@@ -113,7 +113,7 @@ public class MainFrame {
         headFrame.setVisible(true);
     }
 
-    public void updateMainFrame() {
+    void updateMainFrame() {
         tableOfStudents.reloadTableOfStudent(studentController.getStudentDataBase());
         tableOfStudents.updateUI();
     }
